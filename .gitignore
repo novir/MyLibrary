@@ -1,0 +1,19 @@
+# Ignore Play! working directory #
+/lib/
+/logs/
+/modules
+/project/project
+/project/target
+/target
+tmp/
+test-result
+server.pid
+*.eml
+/dist/
+.cache
+
+# Ignore IntelliJ project files #
+.ideaDataSources/
+dataSources/
+drivers/
+*.iml
