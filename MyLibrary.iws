@@ -2,7 +2,19 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="c9655f54-997a-4287-a917-c9261a8d8009" name="Default Changelist" comment="">
+      <change beforePath="$PROJECT_DIR$/MyLibrary.ipr" beforeDir="false" afterPath="$PROJECT_DIR$/MyLibrary.ipr" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/MyLibrary.iws" beforeDir="false" afterPath="$PROJECT_DIR$/MyLibrary.iws" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/bootstrap/Bootstrap.java" beforeDir="false" afterPath="$PROJECT_DIR$/app/bootstrap/Bootstrap.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/controllers/Application.java" beforeDir="false" afterPath="$PROJECT_DIR$/app/controllers/Application.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/controllers/Users.java" beforeDir="false" afterPath="$PROJECT_DIR$/app/controllers/Users.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/models/Book.java" beforeDir="false" afterPath="$PROJECT_DIR$/app/models/Book.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/views/Application/index.html" beforeDir="false" afterPath="$PROJECT_DIR$/app/views/Application/index.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/views/main.html" beforeDir="false" afterPath="$PROJECT_DIR$/app/views/main.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/conf/application.conf" beforeDir="false" afterPath="$PROJECT_DIR$/conf/application.conf" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/conf/routes" beforeDir="false" afterPath="$PROJECT_DIR$/conf/routes" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/stylesheets/main.css" beforeDir="false" afterPath="$PROJECT_DIR$/public/stylesheets/main.css" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/test/BasicTest.java" beforeDir="false" afterPath="$PROJECT_DIR$/test/BasicTest.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/test/data.yml" beforeDir="false" afterPath="$PROJECT_DIR$/test/data.yml" afterDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
@@ -37,13 +49,6 @@
         <item name="LIB_USER: schema" type="3abd1b6a:OraImplModel$Schema" />
         <item name="tables" type="d4e8921:DatabaseStructure$FamilyGroup" />
       </path>
-      <path>
-        <item name="Database" type="3277223f:DatabaseStructure$DbRootGroup" />
-        <item name="oradb@localhost" type="feb32156:DbDataSourceImpl" />
-        <item name="LIB_USER: schema" type="3abd1b6a:OraImplModel$Schema" />
-        <item name="tables" type="d4e8921:DatabaseStructure$FamilyGroup" />
-        <item name="LIB_USER: table" type="942f455b:OraImplModel$Table" />
-      </path>
     </expand>
     <select />
   </component>
@@ -56,6 +61,22 @@
   </component>
   <component name="Git.Settings">
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
+  </component>
+  <component name="GroovyConsoleState">
+    <option name="list">
+      <list>
+        <Entry>
+          <option name="url" value="file://$APPLICATION_CONFIG_DIR$/consoles/groovy/groovy_console.groovy" />
+          <option name="moduleName" value="MyLibrary" />
+          <option name="title" value="MyLibrary (Groovy 2.4.7)" />
+        </Entry>
+      </list>
+    </option>
+  </component>
+  <component name="JsBowerSettings">
+    <node-interpreter value="project" />
+    <bower-package value="" />
+    <bower.json value="" />
   </component>
   <component name="JsFlowSettings">
     <service-enabled>true</service-enabled>
@@ -79,15 +100,35 @@
     <property name="DatabaseDriversLRU" value="oracle" />
     <property name="WebServerToolWindowFactoryState" value="false" />
     <property name="aspect.path.notification.shown" value="true" />
-    <property name="last_opened_file_path" value="$PROJECT_DIR$" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$/app/views/Application/Users" />
+    <property name="node.js.detected.package.eslint" value="true" />
+    <property name="node.js.detected.package.jscs" value="true" />
+    <property name="node.js.detected.package.standard" value="true" />
+    <property name="node.js.detected.package.stylelint" value="true" />
+    <property name="node.js.detected.package.tslint" value="true" />
+    <property name="node.js.path.for.package.eslint" value="project" />
+    <property name="node.js.path.for.package.jscs" value="project" />
+    <property name="node.js.path.for.package.standard" value="project" />
+    <property name="node.js.path.for.package.stylelint" value="project" />
+    <property name="node.js.path.for.package.tslint" value="project" />
+    <property name="node.js.selected.package.eslint" value="(autodetect)" />
+    <property name="node.js.selected.package.jscs" value="" />
+    <property name="node.js.selected.package.standard" value="" />
+    <property name="node.js.selected.package.stylelint" value="" />
+    <property name="node.js.selected.package.tslint" value="(autodetect)" />
+    <property name="nodejs_package_manager_path" value="npm" />
     <property name="project.structure.last.edited" value="Modules" />
     <property name="project.structure.proportion" value="0.22778475" />
-    <property name="project.structure.side.proportion" value="0.26904377" />
-    <property name="settings.editor.selected.configurable" value="play.paths.configuration" />
+    <property name="project.structure.side.proportion" value="0.15408319" />
+    <property name="settings.editor.selected.configurable" value="preferences.pluginManager" />
   </component>
   <component name="RecentsManager">
     <key name="CopyClassDialog.RECENTS_KEY">
       <recent name="models" />
+    </key>
+    <key name="CopyFile.RECENT_KEYS">
+      <recent name="$PROJECT_DIR$/app/views/Application/Users" />
+      <recent name="$PROJECT_DIR$" />
     </key>
   </component>
   <component name="RunDashboard">
@@ -108,7 +149,7 @@
       <option name="ALTERNATIVE_JRE_PATH_ENABLED" value="true" />
       <option name="MAIN_CLASS_NAME" value="play.server.Server" />
       <module name="MyLibrary" />
-      <option name="VM_PARAMETERS" value="-Dapplication.path=&quot;.&quot; -Dplay.id=test" />
+      <option name="VM_PARAMETERS" value="-Dapplication.path=&quot;.&quot; -Dplay.id=test -agentlib:jdwp=transport=dt_socket,server=y,suspend=n,address=8000" />
       <method v="2">
         <option name="Make" enabled="true" />
       </method>
@@ -140,9 +181,24 @@
         <option name="Make" enabled="true" />
       </method>
     </configuration>
+    <configuration name="Debug" type="Remote">
+      <module name="MyLibrary" />
+      <option name="USE_SOCKET_TRANSPORT" value="true" />
+      <option name="SERVER_MODE" value="false" />
+      <option name="SHMEM_ADDRESS" />
+      <option name="HOST" value="127.0.0.1" />
+      <option name="PORT" value="8000" />
+      <option name="AUTO_RESTART" value="false" />
+      <RunnerSettings RunnerId="Debug">
+        <option name="DEBUG_PORT" value="8000" />
+        <option name="LOCAL" value="false" />
+      </RunnerSettings>
+      <method v="2" />
+    </configuration>
     <list>
       <item itemvalue="Application.AppTest" />
       <item itemvalue="Application.Server" />
+      <item itemvalue="Remote.Debug" />
     </list>
   </component>
   <component name="ServiceViewManager">
@@ -168,7 +224,10 @@
       <updated>1574235399877</updated>
       <workItem from="1574235401249" duration="171000" />
       <workItem from="1574235590128" duration="21615000" />
-      <workItem from="1574317407080" duration="24573000" />
+      <workItem from="1574317407080" duration="24881000" />
+      <workItem from="1574403685451" duration="10671000" />
+      <workItem from="1574414554011" duration="663000" />
+      <workItem from="1574415234373" duration="15576000" />
     </task>
     <servers />
   </component>
@@ -187,5 +246,14 @@
         </entry>
       </map>
     </option>
+  </component>
+  <component name="XSLT-Support.FileAssociations.UIState">
+    <expand>
+      <path>
+        <item name="MyLibrary" type="b2602c69:ProjectViewProjectNode" />
+        <item name="MyLibrary" type="47feb1d3:ProjectViewModuleNode" />
+      </path>
+    </expand>
+    <select />
   </component>
 </project>
