@@ -17,3 +17,6 @@ server.pid
 dataSources/
 drivers/
 *.iml
+MyLibrary.iml
+MyLibrary.ipr
+MyLibrary.iws

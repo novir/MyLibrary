@@ -8,7 +8,6 @@ import javax.persistence.*;
 import java.sql.Date;
 import java.time.LocalDate;
 import java.util.Collections;
-import java.util.HashSet;
 import java.util.Set;
 import java.util.TreeSet;
 
@@ -18,28 +17,29 @@ import java.util.TreeSet;
 public class Book extends Model {
 
     @Column(name="title")
-    public String title;
+    private String title;
 
     @Column(name="purchase_date")
-    public Date purchaseDate;
+    private Date purchaseDate;
 
     @Column(name="created_at")
-    public Date createdAt;
+    private Date createdAt;
 
     @Column(name="updated_at")
-    public Date updatedAt;
+    private Date updatedAt;
 
     @Column(name="deleted_at")
-    public Date deletedAt;
+    private Date deletedAt;
 
     @Column(name="is_deleted")
-    public boolean isDeleted;
+    private boolean isDeleted;
 
     @ManyToOne
-    public User owner;
+    private User owner;
 
     @ManyToMany(cascade=CascadeType.PERSIST)
-    public Set<Tag> tags;
+    @JoinTable(name="book_tag")
+    private Set<Tag> tags;
 
     public Book(User owner, String title, Date purchaseDate, Tag... bookTags) {
         this.owner = owner;
@@ -51,11 +51,49 @@ public class Book extends Model {
         this.updatedAt = Date.valueOf(LocalDate.now());
     }
 
-    public Book tagItWith(String name) {
-        tags.add(Tag.findOrCreateByName(name));
-        return this;
+    public String getTitle() {
+        return title;
     }
 
+    public LocalDate getPurchaseDate() {
+        return purchaseDate.toLocalDate();
+    }
 
+    public LocalDate getCreatedAt() {
+        return createdAt.toLocalDate();
+    }
 
+    public LocalDate getUpdatedAt() {
+        return updatedAt.toLocalDate();
+    }
+
+    public LocalDate getDeletedAt() {
+        return deletedAt.toLocalDate();
+    }
+
+    public boolean isDeleted() {
+        return isDeleted;
+    }
+
+    public User getOwner() {
+        return owner;
+    }
+
+    public Set<Tag> getTags() {
+        return tags;
+    }
+
+    public void setTitle(String title) {
+        this.title = title;
+    }
+
+    public void setPurchaseDate(LocalDate purchaseDate) {
+        if (purchaseDate != null) {
+            this.purchaseDate = Date.valueOf(purchaseDate);
+        }
+    }
+
+    public void setOwner(User owner) {
+        this.owner = owner;
+    }
 }

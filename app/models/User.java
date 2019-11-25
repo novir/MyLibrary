@@ -8,6 +8,7 @@ import javax.persistence.*;
 import java.sql.Date;
 import java.time.LocalDate;
 import java.util.ArrayList;
+import java.util.LinkedList;
 import java.util.List;
 
 @Entity
@@ -17,36 +18,94 @@ import java.util.List;
 public class User extends Model {
 
     @Column(name="login", unique=true)
-    public String login;
+    private String login;
 
     @Column(name="password")
-    public String password;
+    private String password;
 
     @Column(name="email", unique=true)
-    public String email;
+    private String email;
 
     @Column(name="created_at")
-    public Date createdAt;
+    private Date createdAt;
 
     @Column(name="updated_at")
-    public Date updatedAt;
+    private Date updatedAt;
 
     @Column(name="deleted_at")
-    public Date deletedAt;
+    private Date deletedAt;
 
     @Column(name="is_deleted")
-    public boolean isDeleted;
+    private boolean isDeleted;
+
+    @Column(name="is_active")
+    private boolean isActive;
 
     @OneToMany(mappedBy="owner", cascade=CascadeType.ALL)
-    public List<Book> books;
+    private List<Book> books;
 
     public User(String login, String password, String email) {
         this.login = login;
         this.password = password;
         this.email = email;
+        this.books = new LinkedList<>();
         this.createdAt = Date.valueOf(LocalDate.now());
         this.updatedAt = Date.valueOf(LocalDate.now());
-        this.books = new ArrayList<>();
     }
 
+    public String getLogin() {
+        return login;
+    }
+
+    public String getPassword() {
+        return password;
+    }
+
+    public String getEmail() {
+        return email;
+    }
+
+    public LocalDate getCreatedAt() {
+        return createdAt.toLocalDate();
+    }
+
+    public LocalDate getUpdatedAt() {
+        return updatedAt.toLocalDate();
+    }
+
+    public LocalDate getDeletedAt() {
+        return deletedAt.toLocalDate();
+    }
+
+    public boolean isDeleted() {
+        return isDeleted;
+    }
+
+    public List<Book> getBooks() {
+        return books;
+    }
+
+    public void setLogin(String login) {
+        if (login != null && !login.trim().isEmpty()) {
+            this.login = login;
+        } else {
+            throw new IllegalArgumentException("Login can't be empty.");
+        }
+    }
+
+    public void setPassword(String password) {
+        if (password != null && !password.trim().isEmpty()) {
+            this.password = password;
+        } else {
+            throw new IllegalArgumentException("Password can't be empty.");
+        }
+    }
+
+    public void setEmail(String email) {
+        if (email != null && !email.trim().isEmpty()) {
+            this.email = email;
+        } else {
+            throw new IllegalArgumentException("Email can't be empty.");
+        }
+    }
 }

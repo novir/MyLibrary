@@ -2,12 +2,10 @@ package models;
 
 import org.hibernate.annotations.SQLDelete;
 import org.hibernate.annotations.Where;
+import play.data.validation.Required;
 import play.db.jpa.Model;
 
-import javax.persistence.Column;
-import javax.persistence.Entity;
-import javax.persistence.ManyToMany;
-import javax.persistence.ManyToOne;
+import javax.persistence.*;
 import java.sql.Date;
 import java.time.LocalDate;
 import java.util.*;
@@ -18,34 +16,27 @@ import java.util.*;
 public class Tag extends Model implements Comparable<Tag> {
 
     @Column(name="name")
-    public String name;
+    private String name;
 
     @Column(name="created_at")
-    public Date createdAt;
+    private Date createdAt;
 
     @Column(name="updated_at")
-    public Date updatedAt;
+    private Date updatedAt;
 
     @Column(name="deleted_at")
-    public Date deletedAt;
+    private Date deletedAt;
 
     @Column(name="is_deleted")
-    public boolean isDeleted;
+    private boolean isDeleted;
 
-    @ManyToMany
-    public Set<Book> books;
-
-    public static Tag findOrCreateByName(String name, Book... taggedBooks) {
-        Tag tag = Tag.find("byName", name).first();
-        if(tag == null) {
-            tag = new Tag(name, taggedBooks);
-        }
-        return tag;
-    }
+    @ManyToMany(cascade=CascadeType.PERSIST)
+    @JoinTable(name="book_tag")
+    private List<Book> books;
 
     public Tag(String name, Book... taggedBooks) {
         this.name = name;
-        books = new HashSet<>();
+        books = new LinkedList<>();
         Collections.addAll(books, taggedBooks);
         createdAt = Date.valueOf(LocalDate.now());
         updatedAt = Date.valueOf(LocalDate.now());
@@ -60,5 +51,30 @@ public class Tag extends Model implements Comparable<Tag> {
     public String toString() {
         return name;
     }
+
+    public String getName() {
+        return name;
+    }
+
+    public LocalDate getCreatedAt() {
+        return createdAt.toLocalDate();
+    }
+
+    public LocalDate getUpdatedAt() {
+        return updatedAt.toLocalDate();
+    }
+
+    public LocalDate getDeletedAt() {
+        return deletedAt.toLocalDate();
+    }
+
+    public boolean isDeleted() {
+        return isDeleted;
+    }
+
+    public List<Book> getBooks() {
+        return books;
+    }
+
 
 }

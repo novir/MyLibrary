@@ -2,19 +2,19 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="c9655f54-997a-4287-a917-c9261a8d8009" name="Default Changelist" comment="">
+      <change beforePath="$PROJECT_DIR$/.gitignore" beforeDir="false" afterPath="$PROJECT_DIR$/.gitignore" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/MyLibrary.ipr" beforeDir="false" afterPath="$PROJECT_DIR$/MyLibrary.ipr" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/MyLibrary.iws" beforeDir="false" afterPath="$PROJECT_DIR$/MyLibrary.iws" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/app/bootstrap/Bootstrap.java" beforeDir="false" afterPath="$PROJECT_DIR$/app/bootstrap/Bootstrap.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/controllers/Application.java" beforeDir="false" afterPath="$PROJECT_DIR$/app/controllers/Application.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/app/controllers/Users.java" beforeDir="false" afterPath="$PROJECT_DIR$/app/controllers/Users.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/app/models/Book.java" beforeDir="false" afterPath="$PROJECT_DIR$/app/models/Book.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/views/Application/index.html" beforeDir="false" afterPath="$PROJECT_DIR$/app/views/Application/index.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/views/main.html" beforeDir="false" afterPath="$PROJECT_DIR$/app/views/main.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/models/Tag.java" beforeDir="false" afterPath="$PROJECT_DIR$/app/models/Tag.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/models/User.java" beforeDir="false" afterPath="$PROJECT_DIR$/app/models/User.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/conf/application.conf" beforeDir="false" afterPath="$PROJECT_DIR$/conf/application.conf" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/conf/routes" beforeDir="false" afterPath="$PROJECT_DIR$/conf/routes" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/public/stylesheets/main.css" beforeDir="false" afterPath="$PROJECT_DIR$/public/stylesheets/main.css" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/test/BasicTest.java" beforeDir="false" afterPath="$PROJECT_DIR$/test/BasicTest.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/test/data.yml" beforeDir="false" afterPath="$PROJECT_DIR$/test/data.yml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/test/models/BookTest.java" beforeDir="false" afterPath="$PROJECT_DIR$/test/models/BookTest.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/test/models/UserTest.java" beforeDir="false" afterPath="$PROJECT_DIR$/test/models/UserTest.java" afterDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
@@ -36,17 +36,17 @@
     <expand>
       <path>
         <item name="Database" type="3277223f:DatabaseStructure$DbRootGroup" />
-        <item name="oradb@localhost" type="feb32156:DbDataSourceImpl" />
+        <item name="oracledb@localhost" type="feb32156:DbDataSourceImpl" />
       </path>
       <path>
         <item name="Database" type="3277223f:DatabaseStructure$DbRootGroup" />
-        <item name="oradb@localhost" type="feb32156:DbDataSourceImpl" />
-        <item name="LIB_USER: schema" type="3abd1b6a:OraImplModel$Schema" />
+        <item name="oracledb@localhost" type="feb32156:DbDataSourceImpl" />
+        <item name="MY_LIB: schema" type="3abd1b6a:OraImplModel$Schema" />
       </path>
       <path>
         <item name="Database" type="3277223f:DatabaseStructure$DbRootGroup" />
-        <item name="oradb@localhost" type="feb32156:DbDataSourceImpl" />
-        <item name="LIB_USER: schema" type="3abd1b6a:OraImplModel$Schema" />
+        <item name="oracledb@localhost" type="feb32156:DbDataSourceImpl" />
+        <item name="MY_LIB: schema" type="3abd1b6a:OraImplModel$Schema" />
         <item name="tables" type="d4e8921:DatabaseStructure$FamilyGroup" />
       </path>
     </expand>
@@ -55,6 +55,7 @@
   <component name="FileTemplateManagerImpl">
     <option name="RECENT_TEMPLATES">
       <list>
+        <option value="Interface" />
         <option value="Class" />
       </list>
     </option>
@@ -98,9 +99,13 @@
   </component>
   <component name="PropertiesComponent">
     <property name="DatabaseDriversLRU" value="oracle" />
+    <property name="Downloaded.Files.Path.Enabled" value="false" />
+    <property name="Repository.Attach.Annotations" value="false" />
+    <property name="Repository.Attach.JavaDocs" value="false" />
+    <property name="Repository.Attach.Sources" value="false" />
     <property name="WebServerToolWindowFactoryState" value="false" />
     <property name="aspect.path.notification.shown" value="true" />
-    <property name="last_opened_file_path" value="$PROJECT_DIR$/app/views/Application/Users" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$/conf" />
     <property name="node.js.detected.package.eslint" value="true" />
     <property name="node.js.detected.package.jscs" value="true" />
     <property name="node.js.detected.package.standard" value="true" />
@@ -120,13 +125,16 @@
     <property name="project.structure.last.edited" value="Modules" />
     <property name="project.structure.proportion" value="0.22778475" />
     <property name="project.structure.side.proportion" value="0.15408319" />
-    <property name="settings.editor.selected.configurable" value="preferences.pluginManager" />
+    <property name="settings.editor.selected.configurable" value="preferences.keymap" />
   </component>
   <component name="RecentsManager">
     <key name="CopyClassDialog.RECENTS_KEY">
+      <recent name="controllers" />
+      <recent name="dao" />
       <recent name="models" />
     </key>
     <key name="CopyFile.RECENT_KEYS">
+      <recent name="$PROJECT_DIR$/conf" />
       <recent name="$PROJECT_DIR$/app/views/Application/Users" />
       <recent name="$PROJECT_DIR$" />
     </key>
@@ -227,7 +235,8 @@
       <workItem from="1574317407080" duration="24881000" />
       <workItem from="1574403685451" duration="10671000" />
       <workItem from="1574414554011" duration="663000" />
-      <workItem from="1574415234373" duration="15576000" />
+      <workItem from="1574415234373" duration="16211000" />
+      <workItem from="1574662766966" duration="25998000" />
     </task>
     <servers />
   </component>
