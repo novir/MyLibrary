@@ -2,19 +2,19 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="c9655f54-997a-4287-a917-c9261a8d8009" name="Default Changelist" comment="">
-      <change beforePath="$PROJECT_DIR$/.gitignore" beforeDir="false" afterPath="$PROJECT_DIR$/.gitignore" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/MyLibrary.ipr" beforeDir="false" afterPath="$PROJECT_DIR$/MyLibrary.ipr" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/test/test-data/users.yml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/MyLibrary.iws" beforeDir="false" afterPath="$PROJECT_DIR$/MyLibrary.iws" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/app/bootstrap/Bootstrap.java" beforeDir="false" afterPath="$PROJECT_DIR$/app/bootstrap/Bootstrap.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/controllers/Books.java" beforeDir="false" afterPath="$PROJECT_DIR$/app/controllers/Books.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/app/controllers/Users.java" beforeDir="false" afterPath="$PROJECT_DIR$/app/controllers/Users.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/models/Book.java" beforeDir="false" afterPath="$PROJECT_DIR$/app/models/Book.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/models/Tag.java" beforeDir="false" afterPath="$PROJECT_DIR$/app/models/Tag.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/dao/BookDao.java" beforeDir="false" afterPath="$PROJECT_DIR$/app/dao/BookDao.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/app/models/User.java" beforeDir="false" afterPath="$PROJECT_DIR$/app/models/User.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/conf/application.conf" beforeDir="false" afterPath="$PROJECT_DIR$/conf/application.conf" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/conf/initialdata.yml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/conf/routes" beforeDir="false" afterPath="$PROJECT_DIR$/conf/routes" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/test/ApplicationTest.java" beforeDir="false" afterPath="$PROJECT_DIR$/test/ApplicationTest.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/test/BasicTest.java" beforeDir="false" afterPath="$PROJECT_DIR$/test/BasicTest.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/test/data.yml" beforeDir="false" afterPath="$PROJECT_DIR$/test/data.yml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/test/models/BookTest.java" beforeDir="false" afterPath="$PROJECT_DIR$/test/models/BookTest.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/test/models/UserTest.java" beforeDir="false" afterPath="$PROJECT_DIR$/test/models/UserTest.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/test/data.yml" beforeDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
@@ -105,7 +105,7 @@
     <property name="Repository.Attach.Sources" value="false" />
     <property name="WebServerToolWindowFactoryState" value="false" />
     <property name="aspect.path.notification.shown" value="true" />
-    <property name="last_opened_file_path" value="$PROJECT_DIR$/conf" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$/test" />
     <property name="node.js.detected.package.eslint" value="true" />
     <property name="node.js.detected.package.jscs" value="true" />
     <property name="node.js.detected.package.standard" value="true" />
@@ -128,14 +128,21 @@
     <property name="settings.editor.selected.configurable" value="preferences.keymap" />
   </component>
   <component name="RecentsManager">
+    <key name="CopyFile.RECENT_KEYS">
+      <recent name="$PROJECT_DIR$/test" />
+      <recent name="$PROJECT_DIR$/conf" />
+      <recent name="$PROJECT_DIR$/app/views/Application/Users" />
+      <recent name="$PROJECT_DIR$" />
+    </key>
     <key name="CopyClassDialog.RECENTS_KEY">
+      <recent name="services.users" />
+      <recent name="actions.users" />
       <recent name="controllers" />
       <recent name="dao" />
       <recent name="models" />
     </key>
-    <key name="CopyFile.RECENT_KEYS">
-      <recent name="$PROJECT_DIR$/conf" />
-      <recent name="$PROJECT_DIR$/app/views/Application/Users" />
+    <key name="MoveFile.RECENT_KEYS">
+      <recent name="$PROJECT_DIR$/test/test-data" />
       <recent name="$PROJECT_DIR$" />
     </key>
   </component>
@@ -151,8 +158,8 @@
       </list>
     </option>
   </component>
-  <component name="RunManager" selected="Application.AppTest">
-    <configuration name="AppTest" type="Application" factoryName="Application">
+  <component name="RunManager" selected="Application.MyLibTest">
+    <configuration name="MyLibTest" type="Application" factoryName="Application">
       <option name="ALTERNATIVE_JRE_PATH" value="1.8" />
       <option name="ALTERNATIVE_JRE_PATH_ENABLED" value="true" />
       <option name="MAIN_CLASS_NAME" value="play.server.Server" />
@@ -162,12 +169,12 @@
         <option name="Make" enabled="true" />
       </method>
     </configuration>
-    <configuration name="Server" type="Application" factoryName="Application" nameIsGenerated="true">
+    <configuration name="MyLibrary" type="Application" factoryName="Application">
       <option name="ALTERNATIVE_JRE_PATH" value="1.8" />
       <option name="ALTERNATIVE_JRE_PATH_ENABLED" value="true" />
       <option name="MAIN_CLASS_NAME" value="play.server.Server" />
       <module name="MyLibrary" />
-      <option name="VM_PARAMETERS" value="-Dapplication.path=&quot;.&quot;" />
+      <option name="VM_PARAMETERS" value="-Dapplication.path=&quot;.&quot; -agentlib:jdwp=transport=dt_socket,server=y,suspend=n,address=8000" />
       <method v="2">
         <option name="Make" enabled="true" />
       </method>
@@ -189,24 +196,9 @@
         <option name="Make" enabled="true" />
       </method>
     </configuration>
-    <configuration name="Debug" type="Remote">
-      <module name="MyLibrary" />
-      <option name="USE_SOCKET_TRANSPORT" value="true" />
-      <option name="SERVER_MODE" value="false" />
-      <option name="SHMEM_ADDRESS" />
-      <option name="HOST" value="127.0.0.1" />
-      <option name="PORT" value="8000" />
-      <option name="AUTO_RESTART" value="false" />
-      <RunnerSettings RunnerId="Debug">
-        <option name="DEBUG_PORT" value="8000" />
-        <option name="LOCAL" value="false" />
-      </RunnerSettings>
-      <method v="2" />
-    </configuration>
     <list>
-      <item itemvalue="Application.AppTest" />
-      <item itemvalue="Application.Server" />
-      <item itemvalue="Remote.Debug" />
+      <item itemvalue="Application.MyLibTest" />
+      <item itemvalue="Application.MyLibrary" />
     </list>
   </component>
   <component name="ServiceViewManager">
@@ -219,6 +211,9 @@
       </serviceView>
     </option>
     <option name="showServicesTree" value="false" />
+  </component>
+  <component name="StructureViewFactory">
+    <option name="ACTIVE_ACTIONS" value=",SHOW_INHERITED" />
   </component>
   <component name="SvnConfiguration">
     <configuration />
@@ -236,7 +231,9 @@
       <workItem from="1574403685451" duration="10671000" />
       <workItem from="1574414554011" duration="663000" />
       <workItem from="1574415234373" duration="16211000" />
-      <workItem from="1574662766966" duration="25998000" />
+      <workItem from="1574662766966" duration="26253000" />
+      <workItem from="1574748891527" duration="22126000" />
+      <workItem from="1574835619163" duration="24118000" />
     </task>
     <servers />
   </component>

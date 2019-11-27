@@ -1,5 +1,6 @@
 package models;
 
+import com.google.gson.Gson;
 import org.hibernate.annotations.SQLDelete;
 import org.hibernate.annotations.Where;
 import play.db.jpa.Model;
@@ -7,9 +8,9 @@ import play.db.jpa.Model;
 import javax.persistence.*;
 import java.sql.Date;
 import java.time.LocalDate;
-import java.util.ArrayList;
 import java.util.LinkedList;
 import java.util.List;
+import java.util.Optional;
 
 @Entity
 @Table(name = "owner")
@@ -38,9 +39,6 @@ public class User extends Model {
     @Column(name="is_deleted")
     private boolean isDeleted;
 
-    @Column(name="is_active")
-    private boolean isActive;
-
     @OneToMany(mappedBy="owner", cascade=CascadeType.ALL)
     private List<Book> books;
 
@@ -65,16 +63,16 @@ public class User extends Model {
         return email;
     }
 
-    public LocalDate getCreatedAt() {
-        return createdAt.toLocalDate();
+    public Optional<LocalDate> getCreatedAt() {
+        return Optional.ofNullable(createdAt).map(Date::toLocalDate);
     }
 
-    public LocalDate getUpdatedAt() {
-        return updatedAt.toLocalDate();
+    public Optional<LocalDate> getUpdatedAt() {
+        return Optional.ofNullable(updatedAt).map(Date::toLocalDate);
     }
 
-    public LocalDate getDeletedAt() {
-        return deletedAt.toLocalDate();
+    public Optional<LocalDate> getDeletedAt() {
+        return Optional.ofNullable(deletedAt).map(Date::toLocalDate);
     }
 
     public boolean isDeleted() {
@@ -107,5 +105,10 @@ public class User extends Model {
         } else {
             throw new IllegalArgumentException("Email can't be empty.");
         }
+    }
+
+    public String toJson() {
+        Gson gson = new Gson();
+        return gson.toJson(this);
     }
 }

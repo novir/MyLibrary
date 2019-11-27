@@ -34,7 +34,7 @@ public class BookDao implements DaoInterface<Book> {
         }
     }
 
-    public static List<Book> findTaggedWith(String tagName) {
+    public static List<Book> findAllTaggedWith(String tagName) {
         return Book.find(
                 "select distinct book from Book as book join book.tags as tags where t.name = ?", tagName
         ).fetch();

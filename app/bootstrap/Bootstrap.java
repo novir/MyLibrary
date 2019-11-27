@@ -11,9 +11,9 @@ public class Bootstrap extends Job {
 
     public void doJob() {
         // Check if the database is empty
-        System.out.println("User.count() = " + User.count());
-        if(User.count() == 0) {
-            Fixtures.loadModels("data.yml");
+        if (User.count() == 0) {
+            Fixtures.deleteDatabase();
+            Fixtures.loadModels("test-data/users.yml");
         }
     }
 
