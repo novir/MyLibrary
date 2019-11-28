@@ -2,19 +2,15 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="c9655f54-997a-4287-a917-c9261a8d8009" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/test/test-data/users.yml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/MyLibrary.ipr" beforeDir="false" afterPath="$PROJECT_DIR$/MyLibrary.ipr" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/MyLibrary.iws" beforeDir="false" afterPath="$PROJECT_DIR$/MyLibrary.iws" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/bootstrap/Bootstrap.java" beforeDir="false" afterPath="$PROJECT_DIR$/app/bootstrap/Bootstrap.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/controllers/Books.java" beforeDir="false" afterPath="$PROJECT_DIR$/app/controllers/Books.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/controllers/Users.java" beforeDir="false" afterPath="$PROJECT_DIR$/app/controllers/Users.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/dao/BookDao.java" beforeDir="false" afterPath="$PROJECT_DIR$/app/dao/BookDao.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/actions/AbstractAction.java" beforeDir="false" afterPath="$PROJECT_DIR$/app/actions/AbstractAction.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/actions/BaseAction.java" beforeDir="false" afterPath="$PROJECT_DIR$/app/actions/BaseAction.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/actions/users/GetUserAction.java" beforeDir="false" afterPath="$PROJECT_DIR$/app/actions/users/GetUserAction.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/actions/users/ListUsersAction.java" beforeDir="false" afterPath="$PROJECT_DIR$/app/actions/users/ListUsersAction.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/app/models/User.java" beforeDir="false" afterPath="$PROJECT_DIR$/app/models/User.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/conf/application.conf" beforeDir="false" afterPath="$PROJECT_DIR$/conf/application.conf" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/conf/initialdata.yml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/conf/routes" beforeDir="false" afterPath="$PROJECT_DIR$/conf/routes" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/test/ApplicationTest.java" beforeDir="false" afterPath="$PROJECT_DIR$/test/ApplicationTest.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/test/BasicTest.java" beforeDir="false" afterPath="$PROJECT_DIR$/test/BasicTest.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/test/data.yml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/views/Application/index.html" beforeDir="false" afterPath="$PROJECT_DIR$/app/views/Application/index.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/views/main.html" beforeDir="false" afterPath="$PROJECT_DIR$/app/views/main.html" afterDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
@@ -57,6 +53,7 @@
       <list>
         <option value="Interface" />
         <option value="Class" />
+        <option value="JavaScript File" />
       </list>
     </option>
   </component>
@@ -233,7 +230,8 @@
       <workItem from="1574415234373" duration="16211000" />
       <workItem from="1574662766966" duration="26253000" />
       <workItem from="1574748891527" duration="22126000" />
-      <workItem from="1574835619163" duration="24118000" />
+      <workItem from="1574835619163" duration="26209000" />
+      <workItem from="1574921809701" duration="15020000" />
     </task>
     <servers />
   </component>

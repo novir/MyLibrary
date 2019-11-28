@@ -1,59 +1,12 @@
 #{extends 'main.html' /}
-#{set title:'Home' /}
+#{set title:'MyLibrary' /}
 
-#{if users}
-*{<div class="post">}*
-*{    <h2 class="post-title">}*
-*{        <a href="#">${frontPost.title}</a>}*
-*{    </h2>}*
-*{    <div class="post-metadata">}*
-*{        <span class="post-author">by ${frontPost.author.fullname}</span>}*
-*{        <span class="post-date">${frontPost.postedAt.format('MMM dd')}</span>}*
-*{        <span class="post-comments">}*
-*{                &nbsp;|&nbsp;}*
-*{        ${frontPost.comments.size() ?: 'no'}}*
-*{            comment${frontPost.comments.size().pluralize()}}*
-*{            #{if frontPost.comments}}*
-*{                , latest by ${frontPost.comments[-1].author}}*
-*{            #{/if}}*
-*{            </span>}*
-*{    </div>}*
-*{    <div class="post-content">}*
-*{    ${frontPost.content.nl2br()}}*
-*{    </div>}*
-*{</div>}*
+<form name="myForm">
 
-    #{if users}
-    <div class="older-posts">
-        <h3>Older posts <span class="from">from this blog</span></h3>
-
-        #{list items:users, as:'user'}
-            <div class="post">
-                <h2 class="post-title">
-                    <a href="#">${user.login}</a>
-                </h2>
-                <div class="post-metadata">
-                        <span class="post-author">
-                            by ${user.email}
-                        </span>
-                    <span class="post-date">
-                            ${user.createdAt.format('dd MMM yy')}
-                        </span>
-                    <div class="post-comments">
-                    ${user.books.size() ?: 'no'}
-                        comment${user.books.size().pluralize()}
-                        #{if user.books}
-                            - latest by ${user.books[-1].name}
-                        #{/if}
-                    </div>
-                </div>
-            </div>
-        #{/list}
-    </div>
-
-    #{/if}
-
-#{/if}
+    Email:
+    <input type="email" name="myAddress" ng-model="text">
+    <span ng-show="myform.myAddress.$error.email">Not a valid e-mail address</span>
+</form>
 
 #{else}
 <div class="empty">

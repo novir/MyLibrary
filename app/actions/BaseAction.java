@@ -1,6 +1,8 @@
 package actions;
 
-public class BaseAction {
+import com.google.gson.Gson;
+
+public abstract class BaseAction {
 
 
 

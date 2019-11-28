@@ -1,15 +1,19 @@
 package actions.users;
 
+import actions.AbstractAction;
 import models.User;
 import services.users.ListUsersService;
 
-import java.util.List;
+import java.util.stream.Collectors;
 
-public class ListUsersAction {
+public class ListUsersAction extends AbstractAction<User> {
 
-    public List<User> execute() {
+    public String execute() {
         ListUsersService listUsersService = new ListUsersService();
-        return listUsersService.execute();
+        return listUsersService.execute()
+                .stream()
+                .map(this::getAsJson)
+                .collect(Collectors.joining(",", "[", "]"));
     }
 
 }

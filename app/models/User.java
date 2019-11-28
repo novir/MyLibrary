@@ -1,6 +1,5 @@
 package models;
 
-import com.google.gson.Gson;
 import org.hibernate.annotations.SQLDelete;
 import org.hibernate.annotations.Where;
 import play.db.jpa.Model;
@@ -105,10 +104,5 @@ public class User extends Model {
         } else {
             throw new IllegalArgumentException("Email can't be empty.");
         }
-    }
-
-    public String toJson() {
-        Gson gson = new Gson();
-        return gson.toJson(this);
     }
 }
