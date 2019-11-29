@@ -1,15 +1,18 @@
-#{extends 'main.html' /}
 #{set title:'MyLibrary' /}
-
-<div>
-    {{1+1}}
-    <users-list></users-list>
-</div>
-
-<p>Total number of phones: 2</p>
-
-#{else}
-<div class="empty">
-    There is currently nothing to read here.
-</div>
-#{/else}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="${_response_encoding}">
+    <title>#{get 'title' /}</title>
+    <link rel="stylesheet" media="screen" href="@{'/public/stylesheets/main.css'}">
+    <link rel="shortcut icon" type="image/png" href="@{'/public/images/favicon.png'}">
+    <script src="@{'/public/javascripts/jquery-1.6.4.min.js'}" charset="${_response_encoding}"></script>
+    <script src="@{'/node_modules/angular/angular.js'}"></script>
+    <script src="@{'/node_modules/angular-route/angular-route.js'}"></script>
+    <script src="@{'/public/javascripts/app.js'}"></script>
+    <script src="@{'/public/javascripts/home-controller.js'}"></script>
+</head>
+<body ng-app="myLib">
+    <ng-view></ng-view>
+</body>
+</html>

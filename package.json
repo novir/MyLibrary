@@ -1,0 +1,27 @@
+{
+  "name": "my_library",
+  "version": "1.0.0",
+  "description": "My Library Project",
+  "main": "public/javascripts/app.js",
+  "directories": {
+    "test": "test"
+  },
+  "dependencies": {
+    "angular": "^1.7.9",
+    "angular-route": "^1.7.9"
+  },
+  "devDependencies": {},
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/novir/MyLibrary.git"
+  },
+  "author": "PP",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/novir/MyLibrary/issues"
+  },
+  "homepage": "https://github.com/novir/MyLibrary#readme"
+}

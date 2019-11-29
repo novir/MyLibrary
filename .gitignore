@@ -11,6 +11,7 @@ server.pid
 *.eml
 /dist/
 .cache
+node_modules/
 
 # Ignore IntelliJ project files #
 .idea/
