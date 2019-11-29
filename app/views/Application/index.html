@@ -1,12 +1,12 @@
 #{extends 'main.html' /}
 #{set title:'MyLibrary' /}
 
-<form name="myForm">
+<div>
+    {{1+1}}
+    <users-list></users-list>
+</div>
 
-    Email:
-    <input type="email" name="myAddress" ng-model="text">
-    <span ng-show="myform.myAddress.$error.email">Not a valid e-mail address</span>
-</form>
+<p>Total number of phones: 2</p>
 
 #{else}
 <div class="empty">

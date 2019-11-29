@@ -105,4 +105,8 @@ public class User extends Model {
             throw new IllegalArgumentException("Email can't be empty.");
         }
     }
+
+    public void setCreatedAt(LocalDate date) {
+        createdAt = Date.valueOf(date);
+    }
 }

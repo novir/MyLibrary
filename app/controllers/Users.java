@@ -14,7 +14,6 @@ public class Users extends Controller {
     public static void show(long id) {
         GetUserAction getUserAction = new GetUserAction();
         renderJSON(getUserAction.execute(id));
-
     }
 
     public static void delete(long id) {

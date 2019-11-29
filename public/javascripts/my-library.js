@@ -1,5 +1,1 @@
-angular.module("myapp", [])
-    .controller("HelloController", function($scope) {
-        $scope.helloTo = {};
-        $scope.helloTo.title = "AngularJS";
-    });
+// angular.module('myLib', []);
