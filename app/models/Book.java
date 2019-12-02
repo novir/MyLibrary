@@ -2,19 +2,17 @@ package models;
 
 import org.hibernate.annotations.SQLDelete;
 import org.hibernate.annotations.Where;
-import play.db.jpa.Model;
 
 import javax.persistence.*;
 import java.sql.Date;
 import java.time.LocalDate;
-import java.util.Collections;
-import java.util.Set;
-import java.util.TreeSet;
+import java.util.*;
 
-@Entity
+@Entity(name="Book")
+@Table(name="book")
 @SQLDelete(sql="Update book SET is_deleted = 1, deleted_at = CURRENT_DATE where id = ?")
 @Where(clause="is_deleted != 1")
-public class Book extends Model {
+public class Book extends MetaModel {
 
     @Column(name="title")
     private String title;
@@ -22,33 +20,27 @@ public class Book extends Model {
     @Column(name="purchase_date")
     private Date purchaseDate;
 
-    @Column(name="created_at")
-    private Date createdAt;
-
-    @Column(name="updated_at")
-    private Date updatedAt;
-
-    @Column(name="deleted_at")
-    private Date deletedAt;
-
-    @Column(name="is_deleted")
-    private boolean isDeleted;
-
     @ManyToOne
     private User owner;
 
-    @ManyToMany(cascade=CascadeType.PERSIST)
-    @JoinTable(name="book_tag")
-    private Set<Tag> tags;
+    @ManyToOne
+    private Author author;
 
-    public Book(User owner, String title, Date purchaseDate, Tag... bookTags) {
-        this.owner = owner;
+    @ManyToMany(cascade=CascadeType.PERSIST)
+    @JoinTable(name="book_tag", joinColumns=@JoinColumn(name="tag_id"), inverseJoinColumns=@JoinColumn(name="book_id"))
+    private List<Tag> tags;
+
+    public Book(User user, String title, LocalDate purchaseDate, Tag... bookTags) {
+        this.owner = user;
         this.title = title;
-        this.purchaseDate = purchaseDate;
-        tags = new TreeSet<>();
+        this.purchaseDate = Date.valueOf(purchaseDate);
+        tags = new LinkedList<>();
         Collections.addAll(tags, bookTags);
-        this.createdAt = Date.valueOf(LocalDate.now());
-        this.updatedAt = Date.valueOf(LocalDate.now());
+    }
+
+    public Book(Book otherBook) {
+        this.title = otherBook.title;
+
     }
 
     public String getTitle() {
@@ -59,27 +51,11 @@ public class Book extends Model {
         return purchaseDate.toLocalDate();
     }
 
-    public LocalDate getCreatedAt() {
-        return createdAt.toLocalDate();
-    }
-
-    public LocalDate getUpdatedAt() {
-        return updatedAt.toLocalDate();
-    }
-
-    public LocalDate getDeletedAt() {
-        return deletedAt.toLocalDate();
-    }
-
-    public boolean isDeleted() {
-        return isDeleted;
-    }
-
-    public User getOwner() {
+    public User getUser() {
         return owner;
     }
 
-    public Set<Tag> getTags() {
+    public List<Tag> getTags() {
         return tags;
     }
 
@@ -88,12 +64,10 @@ public class Book extends Model {
     }
 
     public void setPurchaseDate(LocalDate purchaseDate) {
-        if (purchaseDate != null) {
-            this.purchaseDate = Date.valueOf(purchaseDate);
-        }
+        this.purchaseDate = Date.valueOf(purchaseDate);
     }
 
-    public void setOwner(User owner) {
-        this.owner = owner;
+    public void setUser(User user) {
+        this.owner = user;
     }
 }

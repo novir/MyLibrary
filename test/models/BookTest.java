@@ -18,7 +18,7 @@ public class BookTest extends UnitTest {
     @Test
     public void createAndRetrieveBook() {
         User bob = User.find("byEmail", "bob@gmail.com").first();
-        new Book(bob, "Bob's book", Date.valueOf(LocalDate.now())).save();
+        new Book(bob, "Bob's book", LocalDate.now()).save();
 
         // Retrieve the user with e-mail address bob@gmail.com
         Book book = Book.find("byTitle", "Bob's book").first();
@@ -31,7 +31,7 @@ public class BookTest extends UnitTest {
     @Test
     public void deleteRetrievedBook() {
         User bob = User.find("byEmail", "bob@gmail.com").first();
-        new Book(bob, "Bob's book", Date.valueOf(LocalDate.now())).save();
+        new Book(bob, "Bob's book", LocalDate.now()).save();
 
         Book book = Book.find("byTitle", "Bob's book").first();
         book.delete();

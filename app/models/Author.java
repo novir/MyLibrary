@@ -2,37 +2,36 @@ package models;
 
 import org.hibernate.annotations.SQLDelete;
 import org.hibernate.annotations.Where;
-import play.data.validation.Required;
-import play.db.jpa.Model;
 
 import javax.persistence.*;
-import java.sql.Date;
-import java.time.LocalDate;
-import java.util.*;
+import java.util.Collection;
+import java.util.Collections;
+import java.util.LinkedList;
+import java.util.List;
 
 @Entity
-@SQLDelete(sql="Update tag SET is_deleted = 1, deleted_at = CURRENT_DATE where id = ?")
+@SQLDelete(sql="Update author SET is_deleted = 1, deleted_at = CURRENT_DATE where id = ?")
 @Where(clause="is_deleted != 1")
-public class Tag extends MetaModel implements Comparable<Tag> {
+public class Author extends MetaModel implements Comparable<Author> {
 
     @Column(name="name")
     private String name;
 
-    @ManyToMany(mappedBy="tags", cascade=CascadeType.PERSIST)
+    @OneToMany(mappedBy="author", cascade=CascadeType.ALL)
     private List<Book> books;
 
-    public Tag(String name, Book... taggedBooks) {
+    public Author(String name, Book... writtenBooks) {
         this.name = name;
-        initBooksCollection(taggedBooks);
+        initBooksCollection(writtenBooks);
     }
 
-    private void initBooksCollection(Book... taggedBooks) {
+    private void initBooksCollection(Book... writtenBooks) {
         books = new LinkedList<>();
-        Collections.addAll(books, taggedBooks);
+        Collections.addAll(books, writtenBooks);
     }
 
     @Override
-    public int compareTo(Tag otherTag) {
+    public int compareTo(Author otherTag) {
         return name.compareTo(otherTag.name);
     }
 
