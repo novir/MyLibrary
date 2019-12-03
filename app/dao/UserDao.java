@@ -12,7 +12,8 @@ public class UserDao implements DaoInterface<User> {
         if (id < 1) {
             return Optional.empty();
         }
-        return Optional.ofNullable(User.findById(id));
+        User user = User.em().find(User.class, id);
+        return Optional.ofNullable(user);
     }
 
     @Override

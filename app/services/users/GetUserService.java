@@ -11,8 +11,7 @@ public class GetUserService {
 
     public Optional<User> execute(long id) {
         UserDao userDao = new UserDao();
-        Optional<User> user = userDao.find(id);
-        return user;
+        return userDao.find(id);
     }
 
 }

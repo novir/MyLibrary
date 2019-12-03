@@ -15,3 +15,8 @@
     login: Greg
     password: secret
     email: greg@example.com
+
+# Book(4):
+#     title: Gone with the Wind
+#     owner_id: 1
+#     purchuase_date: 2010-11-22T08:23:15
