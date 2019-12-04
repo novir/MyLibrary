@@ -4,16 +4,16 @@ import com.google.gson.JsonElement;
 import com.google.gson.JsonObject;
 import com.google.gson.JsonSerializationContext;
 import com.google.gson.JsonSerializer;
-import models.User;
+import models.Author;
 
 import java.lang.reflect.Type;
 
-public class UserRelationSerializer implements JsonSerializer<User> {
+public class AuthorRelationSerializer implements JsonSerializer<Author> {
 
     @Override
-    public JsonElement serialize(User user, Type type, JsonSerializationContext jsonSerializationContext) {
+    public JsonElement serialize(Author author, Type type, JsonSerializationContext jsonSerializationContext) {
         JsonObject json = new JsonObject();
-        json.addProperty("id", user.getId());
+        json.addProperty("name", author.getName());
         return json;
     }
 }

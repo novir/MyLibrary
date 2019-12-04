@@ -1,14 +1,15 @@
 package controllers;
 
-import models.User;
+import models.Book;
+import play.mvc.Controller;
 
 import java.util.List;
 
-public class Books extends CRUD {
+public class Books extends Controller {
 
-//    public static void index() {
-//        List<User> users = User.find("").from(0).fetch(10);
-//        renderJSON(users);
-//    }
+    public static void index() {
+        List<Book> books = Book.findAll();
+        renderJSON(books);
+    }
 
 }

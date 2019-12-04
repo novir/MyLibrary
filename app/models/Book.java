@@ -1,6 +1,8 @@
 package models;
 
 import com.google.gson.annotations.JsonAdapter;
+import commons.AuthorRelationSerializer;
+import commons.TagRelationSerializer;
 import commons.UserRelationSerializer;
 import org.hibernate.annotations.SQLDelete;
 import org.hibernate.annotations.Where;
@@ -27,30 +29,37 @@ public class Book extends MetaModel {
     @JsonAdapter(UserRelationSerializer.class)
     private User owner;
 
-    @ManyToOne(fetch = FetchType.LAZY)
+    @ManyToOne(fetch = FetchType.LAZY, cascade = CascadeType.PERSIST)
+    @JoinColumn(name = "author_id", nullable = true)
+    @JsonAdapter(AuthorRelationSerializer.class)
     private Author author;
 
     @ManyToMany(cascade = CascadeType.PERSIST)
     @JoinTable(name = "book_tag",
                 joinColumns = @JoinColumn(name = "tag_id"),
                 inverseJoinColumns = @JoinColumn(name = "book_id"))
-    private List<Tag> tags = new LinkedList<>();
+    @JsonAdapter(TagRelationSerializer.class)
+    private Set<Tag> tags = new TreeSet<>();
 
-    public Book(String title, LocalDate purchaseDate, Tag... bookTags) {
-        this.title = title;
-        this.purchaseDate = Date.valueOf(purchaseDate);
-        //Collections.addAll(tags, bookTags);
+    public Book(User owner, String title, LocalDate purchaseDate, Tag... bookTags) {
+        this(owner, null, title, purchaseDate, bookTags);
     }
 
-    public Book(User user, String title, LocalDate purchaseDate, Tag... bookTags) {
-        this.owner = user;
+    public Book(User owner, Author author, String title,
+                LocalDate purchaseDate, Tag... bookTags) {
+        this.owner = owner;
+        this.author = author;
         this.title = title;
         this.purchaseDate = Date.valueOf(purchaseDate);
-        //Collections.addAll(tags, bookTags);
+        Collections.addAll(tags, bookTags);
     }
 
-    public Book(Book otherBook) {
-        this.title = otherBook.title;
+    public Book(Book original) {
+        title = original.title;
+        purchaseDate = Date.valueOf(original.getPurchaseDate());
+        owner = original.owner;
+        author = original.author;
+        tags.addAll(original.tags);
     }
 
     public String getTitle() {
@@ -65,7 +74,11 @@ public class Book extends MetaModel {
         return owner;
     }
 
-    public List<Tag> getTags() {
+    public Author getAuthor() {
+        return author;
+    }
+
+    public Set<Tag> getTags() {
         return tags;
     }
 
@@ -81,7 +94,15 @@ public class Book extends MetaModel {
         this.owner = user;
     }
 
-    public void detach() {
-        em().detach(this);
+    public void setAuthor(Author author) {
+        this.author = author;
     }
+
+    public void addTag(Tag tag) {
+        if (tag != null) {
+            tags.add(tag);
+
+        }
+    }
+
 }

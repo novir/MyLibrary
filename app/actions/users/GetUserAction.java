@@ -12,8 +12,7 @@ public class GetUserAction extends AbstractAction<User> {
 
     public User execute(long id) {
         GetUserService getUserService = new GetUserService();
-        User user = getUserService.execute(id).orElse(new User("", "", ""));
-        return user;
+        return getUserService.execute(id).orElse(new User("", "", ""));
     }
 
 }

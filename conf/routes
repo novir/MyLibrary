@@ -12,9 +12,20 @@ GET     /favicon.ico                            404
 GET     /public/                                staticDir:public
 GET     /node_modules/                          staticDir:node_modules
 
-# CRUD module added
-GET       /users                                  Users.index
-GET       /users/{id}                             Users.show
-POST      /users                                  Users.add
-PUT       /users/{id}                             Users.edit
-DELETE    /users/{id}                             Users.delete
+# CRUD routes:
+# Users routes:
+GET     /users                                  Users.index
+GET     /users/{id}                             Users.show
+POST    /users                                  Users.add
+PUT     /users/{id}                             Users.update
+DELETE  /users/{id}                             Users.delete
+
+# Books routes:
+GET     /books                                  Books.index
+GET     /books/{id}                             Books.show
+POST    /books                                  Books.add
+PUT     /books/{id}                             Books.update
+DELETE  /books/{id}                             Books.delete
+
+# Authors routes:
+GET     /authors                                Authors.index

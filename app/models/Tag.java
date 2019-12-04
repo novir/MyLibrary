@@ -2,33 +2,43 @@ package models;
 
 import org.hibernate.annotations.SQLDelete;
 import org.hibernate.annotations.Where;
-import play.data.validation.Required;
-import play.db.jpa.Model;
 
-import javax.persistence.*;
-import java.sql.Date;
-import java.time.LocalDate;
-import java.util.*;
+import javax.persistence.CascadeType;
+import javax.persistence.Column;
+import javax.persistence.Entity;
+import javax.persistence.ManyToMany;
+import java.util.Collections;
+import java.util.LinkedList;
+import java.util.List;
 
 @Entity
-@SQLDelete(sql="Update tag SET is_deleted = 1, deleted_at = CURRENT_DATE where id = ?")
-@Where(clause="is_deleted != 1")
+@SQLDelete(sql = "Update tag SET is_deleted = 1, deleted_at = CURRENT_DATE where id = ?")
+@Where(clause = "is_deleted != 1")
 public class Tag extends MetaModel implements Comparable<Tag> {
 
-    @Column(name="name")
+    @Column(name = "name")
     private String name;
 
-    @ManyToMany(mappedBy="tags", cascade=CascadeType.PERSIST)
-    private List<Book> books;
+    @ManyToMany(mappedBy = "tags", cascade = CascadeType.PERSIST)
+    private List<Book> books = new LinkedList<>();
 
     public Tag(String name, Book... taggedBooks) {
         this.name = name;
-        initBooksCollection(taggedBooks);
+        Collections.addAll(books, taggedBooks);
     }
 
-    private void initBooksCollection(Book... taggedBooks) {
-        books = new LinkedList<>();
-        Collections.addAll(books, taggedBooks);
+    public String getName() {
+        return name;
+    }
+
+    public List<Book> getBooks() {
+        return books;
+    }
+
+    public void tagBook(Book book) {
+        if (book != null) {
+            books.add(book);
+        }
     }
 
     @Override
@@ -39,14 +49,6 @@ public class Tag extends MetaModel implements Comparable<Tag> {
     @Override
     public String toString() {
         return name;
-    }
-
-    public String getName() {
-        return name;
-    }
-
-    public List<Book> getBooks() {
-        return books;
     }
 
 }

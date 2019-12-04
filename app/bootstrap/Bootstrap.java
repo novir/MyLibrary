@@ -1,16 +1,15 @@
 package bootstrap;
 
-import play.*;
-import play.jobs.*;
-import play.test.*;
-
-import models.*;
+import models.Author;
+import models.Book;
+import models.Tag;
+import models.User;
+import play.Play;
+import play.jobs.Job;
+import play.jobs.OnApplicationStart;
+import play.test.Fixtures;
 
 import java.time.LocalDate;
-import java.util.Arrays;
-import java.util.Collection;
-import java.util.Collections;
-import java.util.List;
 
 @OnApplicationStart
 public class Bootstrap extends Job {
@@ -19,11 +18,20 @@ public class Bootstrap extends Job {
         // Check if the users table is empty
         if (User.count() == 0) {
             // Below instruction causes hang up of Oracle driver, comment it when working on a real database
-            Fixtures.deleteDatabase();
+            if (Play.runingInTestMode()) {
+                Fixtures.deleteDatabase();
+            }
             Fixtures.loadModels("test-data/users.yml");
             User user = User.findById(1L);
-            Book book = new Book(user, "AAA", LocalDate.now());
-            user.addBook(book);
+            Author author = new Author("Margaret Mitchell");
+            Tag war = new Tag("war");
+            Tag drama = new Tag("drama");
+            Tag history = new Tag("history");
+            Book book1 = new Book(user, author, "Gone with the Wind", LocalDate.now(), drama, war, history);
+            Book book2 = new Book(book1);
+            user.addBook(book1);
+            book2.setTitle("Scarlett");
+            user.addBook(book2);
             user.save();
         }
     }
