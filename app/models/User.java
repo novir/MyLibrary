@@ -1,5 +1,6 @@
 package models;
 
+import dto.UserDto;
 import org.hibernate.annotations.Fetch;
 import org.hibernate.annotations.FetchMode;
 import org.hibernate.annotations.SQLDelete;
@@ -68,5 +69,9 @@ public class User extends MetaModel {
     public void addBook(Book book) {
         books.add(book);
         book.setUser(this);
+    }
+
+    public UserDto toDto() {
+        return new UserDto.UserDtoBuilder(this).withBooks().build();
     }
 }

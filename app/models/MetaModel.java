@@ -56,7 +56,7 @@ public abstract class MetaModel extends Model {
     @PrePersist
     protected void onCreate() {
         createdAt = Date.valueOf(LocalDate.now());
-        // TODO Ask if update date should be stored during creation
+        // TODO Ask if update date should be affected during creation
         updatedAt = Date.valueOf(LocalDate.now());
     }
 
