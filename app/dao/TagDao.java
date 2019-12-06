@@ -22,17 +22,13 @@ public class TagDao implements DaoInterface<Tag> {
     }
 
     @Override
-    public void save(Tag tag) {
-        if (tag != null) {
-            tag.save();
-        }
+    public Tag save(Tag tag) {
+        return tag != null ? tag.save() : null;
     }
 
     @Override
-    public void delete(Tag tag) {
-        if (tag != null) {
-            tag.delete();
-        }
+    public Tag delete(Tag tag) {
+        return tag != null ? tag.delete() : null;
     }
 
     public static Tag findOrCreateByName(String name, Book... taggedBooks) {

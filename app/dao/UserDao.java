@@ -2,8 +2,9 @@ package dao;
 
 import models.User;
 
-import java.util.List;
+import java.util.Collection;
 import java.util.Optional;
+import java.util.Set;
 
 public class UserDao implements DaoInterface<User> {
 
@@ -12,27 +13,22 @@ public class UserDao implements DaoInterface<User> {
         if (id < 1) {
             return Optional.empty();
         }
-        User user = User.em().find(User.class, id);
-        return Optional.ofNullable(user);
+        return Optional.ofNullable(User.findById(id));
     }
 
     @Override
-    public List<User> findAll() {
+    public Collection<User> findAll() {
         return User.findAll();
     }
 
     @Override
-    public void save(User user) {
-        if (user != null) {
-            user.save();
-        }
+    public User save(User user) {
+        return user != null ? user.save() : null;
     }
 
     @Override
-    public void delete(User user) {
-        if (user != null) {
-            user.delete();
-        }
+    public User delete(User user) {
+        return user != null ? user.delete() : null;
     }
 
 }

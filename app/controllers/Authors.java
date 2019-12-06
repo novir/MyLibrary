@@ -1,6 +1,6 @@
 package controllers;
 
-import actions.users.GetUserAction;
+import actions.users.ShowUserAction;
 import actions.users.ListUsersAction;
 import play.mvc.Controller;
 
@@ -12,8 +12,8 @@ public class Authors extends Controller {
     }
 
     public static void show(long id) {
-        GetUserAction getUserAction = new GetUserAction();
-        renderJSON(getUserAction.execute(id));
+        ShowUserAction showUserAction = new ShowUserAction();
+        renderJSON(showUserAction.execute(id));
     }
 
     public static void delete(long id) {

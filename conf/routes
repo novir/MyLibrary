@@ -16,14 +16,14 @@ GET     /node_modules/                          staticDir:node_modules
 # Users routes:
 GET     /users                                  Users.index
 GET     /users/{id}                             Users.show
-POST    /users                                  Users.add
+POST    /users                                  Users.create
 PUT     /users/{id}                             Users.update
 DELETE  /users/{id}                             Users.delete
 
 # Books routes:
 GET     /books                                  Books.index
 GET     /books/{id}                             Books.show
-POST    /books                                  Books.add
+POST    /books                                  Books.create
 PUT     /books/{id}                             Books.update
 DELETE  /books/{id}                             Books.delete
 

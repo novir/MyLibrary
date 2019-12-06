@@ -4,6 +4,7 @@ import com.google.gson.annotations.JsonAdapter;
 import commons.AuthorRelationSerializer;
 import commons.TagRelationSerializer;
 import commons.UserRelationSerializer;
+import dto.BookDto;
 import org.hibernate.annotations.SQLDelete;
 import org.hibernate.annotations.Where;
 
@@ -101,8 +102,12 @@ public class Book extends MetaModel {
     public void addTag(Tag tag) {
         if (tag != null) {
             tags.add(tag);
-
+            tag.getBooks().add(this);
         }
+    }
+
+    public BookDto toDto() {
+        return new BookDto.BookDtoBuilder(this).build();
     }
 
 }

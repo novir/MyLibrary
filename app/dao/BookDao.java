@@ -21,17 +21,13 @@ public class BookDao implements DaoInterface<Book> {
     }
 
     @Override
-    public void save(Book book) {
-        if (book != null) {
-            book.save();
-        }
+    public Book save(Book book) {
+        return book != null ? book.save() : null;
     }
 
     @Override
-    public void delete(Book book) {
-        if (book != null) {
-            book.delete();
-        }
+    public Book delete(Book book) {
+        return book != null ? book.delete() : null;
     }
 
     public static List<Book> findAllTaggedWith(String tagName) {

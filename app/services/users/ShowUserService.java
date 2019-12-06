@@ -8,7 +8,7 @@ import models.User;
 import java.util.List;
 import java.util.Optional;
 
-public class GetUserService {
+public class ShowUserService {
 
     public Optional<UserDto> execute(long id) {
         UserDao userDao = new UserDao();

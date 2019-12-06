@@ -1,9 +1,14 @@
 package controllers;
 
-import actions.users.GetUserAction;
+import actions.users.CreateUserAction;
 import actions.users.ListUsersAction;
-import dto.UserDto;
+import actions.users.RemoveUserAction;
+import actions.users.ShowUserAction;
+import play.data.binding.Binder;
+import play.data.validation.Required;
 import play.mvc.Controller;
+
+import java.util.Collections;
 
 public class Users extends Controller {
 
@@ -13,13 +18,20 @@ public class Users extends Controller {
     }
 
     public static void show(long id) {
-        GetUserAction getUserAction = new GetUserAction();
-        getUserAction.execute(id).ifPresent(Controller::renderJSON);
+        ShowUserAction showUserAction = new ShowUserAction();
+        showUserAction.execute(id).ifPresent(Controller::renderJSON);
+    }
+
+    public static void create(@Required String login, @Required String password, @Required String email) {
+        CreateUserAction createUserAction = new CreateUserAction();
+    }
+
+    public static void update(long id) {
+
     }
 
     public static void delete(long id) {
-        System.out.println("Deleted " + id);
-        renderJSON("{}");
+        RemoveUserAction removeUserAction = new RemoveUserAction();
+        removeUserAction.execute(id).ifPresent(Controller::renderJSON);
     }
-
 }

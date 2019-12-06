@@ -1,5 +1,6 @@
 package models;
 
+import dto.TagDto;
 import org.hibernate.annotations.SQLDelete;
 import org.hibernate.annotations.Where;
 
@@ -7,9 +8,7 @@ import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.ManyToMany;
-import java.util.Collections;
-import java.util.LinkedList;
-import java.util.List;
+import java.util.*;
 
 @Entity
 @SQLDelete(sql = "Update tag SET is_deleted = 1, deleted_at = CURRENT_DATE where id = ?")
@@ -20,7 +19,7 @@ public class Tag extends MetaModel implements Comparable<Tag> {
     private String name;
 
     @ManyToMany(mappedBy = "tags", cascade = CascadeType.PERSIST)
-    private List<Book> books = new LinkedList<>();
+    private Set<Book> books = new HashSet<>();
 
     public Tag(String name, Book... taggedBooks) {
         this.name = name;
@@ -31,13 +30,14 @@ public class Tag extends MetaModel implements Comparable<Tag> {
         return name;
     }
 
-    public List<Book> getBooks() {
+    public Set<Book> getBooks() {
         return books;
     }
 
     public void tagBook(Book book) {
         if (book != null) {
             books.add(book);
+            book.getTags().add(this);
         }
     }
 
@@ -49,6 +49,10 @@ public class Tag extends MetaModel implements Comparable<Tag> {
     @Override
     public String toString() {
         return name;
+    }
+
+    public TagDto toDto() {
+        return new TagDto.TagDtoBuilder(this).build();
     }
 
 }

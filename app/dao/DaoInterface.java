@@ -1,16 +1,16 @@
 package dao;
 
-import java.util.List;
+import java.util.Collection;
 import java.util.Optional;
 
 public interface DaoInterface<T> {
 
     Optional<T> find(long id);
 
-    List<T> findAll();
+    Collection<T> findAll();
 
-    void save(T t);
+    T save(T t);
 
-    void delete(T t);
+    T delete(T t);
 
 }

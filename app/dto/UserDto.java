@@ -1,12 +1,14 @@
 package dto;
 
+import models.Book;
 import models.User;
 
+import java.time.LocalDate;
 import java.util.HashSet;
 import java.util.Set;
 import java.util.stream.Collectors;
 
-public class UserDto extends MetaDto {
+public class UserDto extends BaseDto {
 
     private String login;
 
@@ -17,7 +19,7 @@ public class UserDto extends MetaDto {
     private Set<BookDto> books;
 
     private UserDto(UserDtoBuilder builder) {
-        super(builder.id);
+        super(builder.id, builder.createdAt, builder.updatedAt, builder.deletedAt);
         login = builder.login;
         password = builder.password;
         email = builder.email;
@@ -56,6 +58,10 @@ public class UserDto extends MetaDto {
         this.books = books;
     }
 
+    public User toModel() {
+        return new User(login, password, email);
+    }
+
     public static class UserDtoBuilder {
 
         private Long id;
@@ -68,6 +74,12 @@ public class UserDto extends MetaDto {
 
         private Set<BookDto> books = new HashSet<>();
 
+        private LocalDate createdAt;
+
+        private LocalDate updatedAt;
+
+        private LocalDate deletedAt;
+
         private User userModel;
 
         public UserDtoBuilder(String login, String password, String email) {
@@ -78,10 +90,13 @@ public class UserDto extends MetaDto {
 
         public UserDtoBuilder(User user) {
             userModel = user;
-            id = user.getId();
+            id = userModel.getId();
             login = userModel.getLogin();
             password = userModel.getPassword();
             email = userModel.getEmail();
+            createdAt = userModel.getCreatedAt().orElse(null);
+            updatedAt = userModel.getUpdatedAt().orElse(null);
+            deletedAt = userModel.getDeletedAt().orElse(null);
         }
 
         public UserDtoBuilder withBooks() {
@@ -94,7 +109,7 @@ public class UserDto extends MetaDto {
         private Set<BookDto> getUserBooks() {
             return userModel.getBooks()
                     .stream()
-                    .map(book -> new BookDto.BookDtoBuilder(book).build())
+                    .map(Book::toDto)
                     .collect(Collectors.toSet());
         }
 

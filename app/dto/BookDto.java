@@ -1,12 +1,15 @@
 package dto;
 
+import models.Author;
 import models.Book;
+import models.Tag;
+import models.User;
 
 import java.time.LocalDate;
 import java.util.Set;
 import java.util.stream.Collectors;
 
-public class BookDto extends MetaDto {
+public class BookDto extends BaseDto {
 
     private String title;
 
@@ -14,62 +17,17 @@ public class BookDto extends MetaDto {
 
     private UserDto owner;
 
-//    private AuthorDto author;
-//
-//    private Set<TagDto> tags;
+    private AuthorDto author;
+
+    private Set<TagDto> tags;
 
     private BookDto(BookDtoBuilder builder) {
-        super(builder.id);
+        super(builder.id, builder.createdAt, builder.updatedAt, builder.deletedAt);
         title = builder.title;
         purchaseDate = builder.purchaseDate;
         owner = builder.owner;
-//        author = builder.author;
-//        tags = builder.tags;
-    }
-
-    public static class BookDtoBuilder {
-
-        private Long id;
-
-        private String title;
-
-        private LocalDate purchaseDate;
-
-        private UserDto owner;
-
-//        private AuthorDto author;
-//
-//        private Set<TagDto> tags;
-
-        private Book bookModel;
-
-        public BookDtoBuilder(UserDto owner, String title, LocalDate purchaseDate) {
-            this.owner = owner;
-            this.title = title;
-            this.purchaseDate = purchaseDate;
-        }
-
-        public BookDtoBuilder(Book book) {
-            bookModel = book;
-            title = bookModel.getTitle();
-            purchaseDate = bookModel.getPurchaseDate();
-        }
-
-//        public BookDtoBuilder withBooks() {
-//            if (bookModel != null) {
-//                books = bookModel.getBooks()
-//                        .stream()
-//                        .map(book -> {
-//
-//                        })
-//                        .collect(Collectors.toList());
-//            }
-//            return this;
-//        }
-
-        public BookDto build() {
-            return new BookDto(this);
-        }
+        author = builder.author;
+        tags = builder.tags;
     }
 
     public String getTitle() {
@@ -84,13 +42,13 @@ public class BookDto extends MetaDto {
         return owner;
     }
 
-//    public AuthorDto getAuthor() {
-//        return author;
-//    }
-//
-//    public Set<TagDto> getTags() {
-//        return tags;
-//    }
+    public AuthorDto getAuthor() {
+        return author;
+    }
+
+    public Set<TagDto> getTags() {
+        return tags;
+    }
 
     public void setTitle(String title) {
         this.title = title;
@@ -104,8 +62,76 @@ public class BookDto extends MetaDto {
         this.owner = user;
     }
 
-//    public void setAuthor(AuthorDto author) {
-//        this.author = author;
-//    }
+    public void setAuthor(AuthorDto author) {
+        this.author = author;
+    }
+
+    public static class BookDtoBuilder {
+
+        private Long id;
+
+        private String title;
+
+        private LocalDate purchaseDate;
+
+        private UserDto owner;
+
+        private AuthorDto author;
+
+        private Set<TagDto> tags;
+
+        private LocalDate createdAt;
+
+        private LocalDate updatedAt;
+
+        private LocalDate deletedAt;
+
+        private Book bookModel;
+
+        public BookDtoBuilder(UserDto owner, String title, LocalDate purchaseDate) {
+            this.owner = owner;
+            this.title = title;
+            this.purchaseDate = purchaseDate;
+        }
+
+        public BookDtoBuilder(Book book) {
+            bookModel = book;
+            title = bookModel.getTitle();
+            purchaseDate = bookModel.getPurchaseDate();
+            createdAt = bookModel.getCreatedAt().orElse(null);
+            updatedAt = bookModel.getUpdatedAt().orElse(null);
+            deletedAt = bookModel.getDeletedAt().orElse(null);
+        }
+
+        public BookDtoBuilder withOwner() {
+            if (bookModel != null) {
+                User user = bookModel.getUser();
+                this.owner = user.toDto();
+            }
+            return this;
+        }
+
+        public BookDtoBuilder withAuthor() {
+            if (bookModel != null) {
+                Author author = bookModel.getAuthor();
+                this.author = author.toDto();
+            }
+            return this;
+        }
+
+        public BookDtoBuilder withTags() {
+            if (bookModel != null) {
+                tags = bookModel.getTags()
+                        .stream()
+                        .map(Tag::toDto)
+                        .collect(Collectors.toSet());
+            }
+            return this;
+        }
+
+        public BookDto build() {
+            return new BookDto(this);
+        }
+    }
 
 }

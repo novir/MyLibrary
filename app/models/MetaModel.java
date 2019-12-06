@@ -53,6 +53,10 @@ public abstract class MetaModel extends Model {
         this.deletedAt = Date.valueOf(deletedAt);
     }
 
+    public void setIsDeleted(boolean isDeleted) {
+        this.isDeleted = isDeleted;
+    }
+
     @PrePersist
     protected void onCreate() {
         createdAt = Date.valueOf(LocalDate.now());
