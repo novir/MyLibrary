@@ -13,7 +13,7 @@ public class Authors extends Controller {
 
     public static void show(long id) {
         ShowUserAction showUserAction = new ShowUserAction();
-        renderJSON(showUserAction.execute(id));
+        //renderJSON(showUserAction.execute(id));
     }
 
     public static void delete(long id) {

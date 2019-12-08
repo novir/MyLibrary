@@ -2,6 +2,7 @@ package dto;
 
 import models.Book;
 import models.User;
+import play.data.validation.Required;
 
 import java.time.LocalDate;
 import java.util.HashSet;

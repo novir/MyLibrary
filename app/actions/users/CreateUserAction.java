@@ -1,17 +1,16 @@
 package actions.users;
 
-import actions.AbstractAction;
+import actions.AbstractCrudAction;
 import dto.UserDto;
 import services.users.CreateUserService;
 
-import java.util.Map;
+import java.util.Optional;
 
-public class CreateUserAction extends AbstractAction<UserDto> {
+public class CreateUserAction extends AbstractCrudAction<UserDto> {
 
-    public UserDto execute(Map<String, String> parameters) {
+    @Override
+    protected Optional<UserDto> run() {
         CreateUserService createUserService = new CreateUserService();
-        UserDto user = new UserDto.UserDtoBuilder(parameters.get("login"), parameters.get("password"), parameters.get("email")).build();
-        return createUserService.execute(user);
+        return Optional.ofNullable(createUserService.execute(dto));
     }
-
 }

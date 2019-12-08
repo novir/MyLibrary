@@ -9,7 +9,7 @@
     <version>1.1</version>
   </parent>
 
-  <groupId>pl.info-baza.maven</groupId>
+  <groupId>pl.ibs.maven</groupId>
   <artifactId>MyLibrary</artifactId>
   <version>1.0-SNAPSHOT</version>
   <name>My Library</name>

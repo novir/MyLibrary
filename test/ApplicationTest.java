@@ -18,11 +18,12 @@ public class ApplicationTest extends FunctionalTest {
 
     @Test
     public void testThatUserAdditionWorks() {
-        Map<String, String> params = new HashMap<>();
-        params.put("login", "Frank");
-        params.put("password", "lorem");
-        params.put("email", "frank@example.com");
-        Response response = POST("/users", params);
+        Map<String, String> user = new HashMap<>();
+        user.put("user", "create");
+        user.put("user.login", "Frank");
+        user.put("user.password", "lorem");
+        user.put("user.email", "frank@example.com");
+        Response response = POST("/users", user);
         assertIsOk(response);
         assertContentType("application/json", response);
         assertCharset(play.Play.defaultWebEncoding, response);
