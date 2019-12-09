@@ -10,10 +10,10 @@ public class RemoveUserService {
 
     public Optional<UserDto> execute(long id) {
         UserDao userDao = new UserDao();
-        Optional<User> userToDelete = userDao.find(id);
-        if (userToDelete.isPresent()) {
-            User deletedUser = userDao.delete(userToDelete.get());
-            return Optional.of(deletedUser.toDto());
+        Optional<User> modelToDelete = userDao.find(id);
+        if (modelToDelete.isPresent()) {
+            User deletedModel = userDao.delete(modelToDelete.get());
+            return Optional.of(deletedModel.toDto());
         }
         return Optional.empty();
     }

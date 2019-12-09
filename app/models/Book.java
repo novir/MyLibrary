@@ -110,4 +110,26 @@ public class Book extends MetaModel {
         return new BookDto.BookDtoBuilder(this).build();
     }
 
+    public void fillWith(Book other) {
+        if (other.title != null) {
+            this.title = other.title;
+        }
+        if (other.purchaseDate != null) {
+            this.purchaseDate = other.purchaseDate;
+        }
+        if (other.owner != null) {
+            this.owner = other.owner;
+        }
+        if (other.author != null) {
+            this.author = other.author;
+        }
+        if (other.tags != null) {
+            this.tags = other.tags;
+        }
+    }
+
+    @Override
+    public String toString() {
+        return getTitle();
+    }
 }

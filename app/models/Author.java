@@ -43,6 +43,16 @@ public class Author extends MetaModel implements Comparable<Author> {
         book.setAuthor(this);
     }
 
+    public AuthorDto toDto() {
+        return new AuthorDto.AuthorDtoBuilder(this).build();
+    }
+
+    public void fillWith(Author other) {
+        if (other.name != null) {
+            this.name = other.name;
+        }
+    }
+
     @Override
     public int compareTo(Author otherTag) {
         return name.compareTo(otherTag.name);
@@ -50,11 +60,7 @@ public class Author extends MetaModel implements Comparable<Author> {
 
     @Override
     public String toString() {
-        return name;
-    }
-
-    public AuthorDto toDto() {
-        return new AuthorDto.AuthorDtoBuilder(this).build();
+        return getName();
     }
 
 }

@@ -36,6 +36,11 @@ public class TagDto extends BaseDto {
         this.books = books;
     }
 
+    @Override
+    public Object toModel() {
+        return new Tag(name);
+    }
+
     public static class TagDtoBuilder {
 
         private Long id;

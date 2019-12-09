@@ -1,19 +1,8 @@
 package controllers;
 
-import actions.users.CreateUserAction;
-import actions.users.ListUsersAction;
-import actions.users.RemoveUserAction;
-import actions.users.ShowUserAction;
+import actions.users.*;
 import dto.UserDto;
-import dto.binders.UserDtoBinder;
-import play.data.binding.As;
-import play.data.binding.Binder;
-import play.data.validation.Required;
-import play.data.validation.Valid;
 import play.mvc.Controller;
-import play.mvc.Http;
-
-import java.util.Collections;
 
 public class Users extends Controller {
 
@@ -22,7 +11,6 @@ public class Users extends Controller {
         renderJSON(listUsersAction.execute());
     }
 
-
     public static void show(String id) {
         ShowUserAction showUserAction = new ShowUserAction();
         showUserAction.execute(id).ifPresent(Controller::renderJSON);
@@ -30,15 +18,17 @@ public class Users extends Controller {
 
     public static void create(UserDto user) {
         CreateUserAction createUserAction = new CreateUserAction();
-        createUserAction.execute(user);
+        createUserAction.execute(user).ifPresent(Controller::renderJSON);
     }
 
-    public static void update(String id) {
-
+    public static void update(String id, UserDto user) {
+        UpdateUserAction updateUserAction = new UpdateUserAction();
+        updateUserAction.execute(id, user).ifPresent(Controller::renderJSON);
     }
 
     public static void delete(String id) {
         RemoveUserAction removeUserAction = new RemoveUserAction();
         removeUserAction.execute(id).ifPresent(Controller::renderJSON);
     }
+
 }

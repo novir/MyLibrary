@@ -2,14 +2,13 @@ package dto;
 
 import models.Book;
 import models.User;
-import play.data.validation.Required;
 
 import java.time.LocalDate;
 import java.util.HashSet;
 import java.util.Set;
 import java.util.stream.Collectors;
 
-public class UserDto extends BaseDto {
+public class UserDto extends BaseDto<User> {
 
     private String login;
 

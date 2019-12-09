@@ -17,15 +17,27 @@ GET     /node_modules/                          staticDir:node_modules
 GET     /users                                  Users.index
 GET     /users/{id}                             Users.show
 POST    /users                                  Users.create
-PUT     /users/{id}                             Users.update
+POST    /users/{id}                             Users.update
 DELETE  /users/{id}                             Users.delete
 
 # Books routes:
 GET     /books                                  Books.index
 GET     /books/{id}                             Books.show
 POST    /books                                  Books.create
-PUT     /books/{id}                             Books.update
+POST    /books/{id}                             Books.update
 DELETE  /books/{id}                             Books.delete
 
 # Authors routes:
 GET     /authors                                Authors.index
+GET     /authors/{id}                           Authors.show
+POST    /authors                                Authors.create
+POST    /authors/{id}                           Authors.update
+DELETE  /authors/{id}                           Authors.delete
+
+# Tags routes:
+GET     /tags                                   Tags.index
+GET     /tags/{id}                              Tags.show
+POST    /tags                                   Tags.create
+POST    /tags/{id}                              Tags.update
+DELETE  /tags/{id}                              Tags.delete
+

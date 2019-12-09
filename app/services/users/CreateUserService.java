@@ -4,13 +4,13 @@ import dao.UserDao;
 import dto.UserDto;
 import models.User;
 
-import java.util.Optional;
-
 public class CreateUserService {
 
-    public UserDto execute(UserDto user) {
+    public UserDto execute(UserDto userData) {
         UserDao userDao = new UserDao();
-        return userDao.save(user.toModel()).toDto();
+        User modelToPersist = userData.toModel();
+        User persistedModel = userDao.save(modelToPersist);
+        return persistedModel.toDto();
     }
 
 }

@@ -6,6 +6,7 @@ import models.Tag;
 import models.User;
 
 import java.time.LocalDate;
+import java.util.Optional;
 import java.util.Set;
 import java.util.stream.Collectors;
 
@@ -42,8 +43,8 @@ public class BookDto extends BaseDto {
         return owner;
     }
 
-    public AuthorDto getAuthor() {
-        return author;
+    public Optional<AuthorDto> getAuthor() {
+        return Optional.ofNullable(author);
     }
 
     public Set<TagDto> getTags() {
@@ -64,6 +65,12 @@ public class BookDto extends BaseDto {
 
     public void setAuthor(AuthorDto author) {
         this.author = author;
+    }
+
+    @Override
+    public Object toModel() {
+        Author bookAuthor = getAuthor().map(AuthorDto::toModel).orElse(null);
+        return new Book(owner.toModel(), bookAuthor, title, purchaseDate);
     }
 
     public static class BookDtoBuilder {

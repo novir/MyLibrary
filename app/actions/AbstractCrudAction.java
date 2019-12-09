@@ -21,11 +21,16 @@ public abstract class AbstractCrudAction<T> extends BaseAction<T> {
         return run();
     }
 
-//    public Optional<T> execute(String id, Map<String, String> data) {
-//
-//    }
+    public Optional<T> execute(String id, T dto) {
+        this.id = parseId(id);
+        this.dto = dto;
+        if (this.id != null) {
+            return run();
+        }
+        return Optional.empty();
+    }
 
-    protected Long parseId(String id) {
+    private Long parseId(String id) {
         try {
             return Long.valueOf(id);
         } catch (NumberFormatException ex) {

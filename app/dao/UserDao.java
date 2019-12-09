@@ -4,7 +4,6 @@ import models.User;
 
 import java.util.Collection;
 import java.util.Optional;
-import java.util.Set;
 
 public class UserDao implements DaoInterface<User> {
 

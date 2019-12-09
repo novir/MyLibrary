@@ -73,4 +73,24 @@ public class User extends MetaModel {
         return new UserDto.UserDtoBuilder(this).build();
     }
 
+    public void fillWith(User other) {
+        if (other.login != null) {
+            this.login = other.login;
+        }
+        if (other.password != null) {
+            this.password = other.password;
+        }
+        if (other.email != null) {
+            this.email = other.email;
+        }
+        if (other.books != null) {
+            this.books = other.books;
+        }
+    }
+
+    @Override
+    public String toString() {
+        return getLogin();
+    }
+
 }

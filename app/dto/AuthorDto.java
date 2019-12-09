@@ -8,7 +8,7 @@ import java.util.HashSet;
 import java.util.Set;
 import java.util.stream.Collectors;
 
-public class AuthorDto extends BaseDto {
+public class AuthorDto extends BaseDto<Author> {
 
     private String name;
 
@@ -34,6 +34,11 @@ public class AuthorDto extends BaseDto {
 
     public void setBooks(Set<BookDto> books) {
         this.books = books;
+    }
+
+    @Override
+    public Author toModel() {
+        return new Author(name);
     }
 
     public static class AuthorDtoBuilder {

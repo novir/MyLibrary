@@ -3,7 +3,7 @@ package dto;
 import java.time.LocalDate;
 import java.util.Optional;
 
-public abstract class BaseDto {
+public abstract class BaseDto<T> {
 
     private final Long id;
 
@@ -24,6 +24,8 @@ public abstract class BaseDto {
             isDeleted = true;
         }
     }
+
+    public abstract T toModel();
 
     public Long getId() {
         return id;

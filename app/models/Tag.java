@@ -41,6 +41,16 @@ public class Tag extends MetaModel implements Comparable<Tag> {
         }
     }
 
+    public TagDto toDto() {
+        return new TagDto.TagDtoBuilder(this).build();
+    }
+
+    public void fillWith(Tag other) {
+        if (other.name != null) {
+            this.name = other.name;
+        }
+    }
+
     @Override
     public int compareTo(Tag otherTag) {
         return name.compareTo(otherTag.name);
@@ -48,11 +58,7 @@ public class Tag extends MetaModel implements Comparable<Tag> {
 
     @Override
     public String toString() {
-        return name;
-    }
-
-    public TagDto toDto() {
-        return new TagDto.TagDtoBuilder(this).build();
+        return getName();
     }
 
 }
