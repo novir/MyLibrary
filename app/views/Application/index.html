@@ -2,15 +2,18 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="${_response_encoding}">
-    <title>#{get 'title' /}</title>
-    <link rel="stylesheet" media="screen" href="@{'/public/stylesheets/main.css'}">
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
     <link rel="shortcut icon" type="image/png" href="@{'/public/images/favicon.png'}">
-    <script src="@{'/public/javascripts/jquery-1.6.4.min.js'}" charset="${_response_encoding}"></script>
+    <link href="@{'/node_modules/bootstrap/dist/css/bootstrap.min.css'}" rel="stylesheet">
     <script src="@{'/node_modules/angular/angular.js'}"></script>
     <script src="@{'/node_modules/angular-route/angular-route.js'}"></script>
+    <script src="@{'/node_modules/bootstrap/dist/js/bootstrap.min.js'}"></script>
+    <script src="@{'/public/javascripts/jquery-1.6.4.min.js'}" charset="${_response_encoding}"></script>
     <script src="@{'/public/javascripts/app.js'}"></script>
     <script src="@{'/public/javascripts/home-controller.js'}"></script>
+    <title>#{get 'title' /}</title>
 </head>
 <body ng-app="myLib">
     <ng-view></ng-view>

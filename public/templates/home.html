@@ -1,7 +1,8 @@
-<div>
-    <ol>
-        <li ng-repeat="user in vm.users">
-            <p>{{ user.login }} | {{ user.email }} | {{ user.createdAt }}</p>
-        </li>
-    </ol>
+<div class="container" style="background: red">
+    <div class="row" ng-repeat="user in vm.users">
+        <span class="glyphicon glyphicon-user col-xs-1"></span>
+        <div class="col-xs-3">{{ user.login }}</div>
+        <div class="col-xs-4">{{ user.email }}</div>
+        <div class="col-xs-4">{{ user.createdAt }}</div>
+    </div>
 </div>
