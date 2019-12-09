@@ -1,14 +1,15 @@
 package dao;
 
 import models.Author;
+import play.db.jpa.Model;
 
 import java.util.Collection;
 import java.util.Optional;
 
-public class AuthorDao implements DaoInterface<Author> {
+public class AuthorDao<T extends Model> implements DaoInterface<T> {
 
     @Override
-    public Optional<Author> find(long id) {
+    public Optional<T> find(long id) {
         if (id < 1) {
             return Optional.empty();
         }
@@ -16,17 +17,17 @@ public class AuthorDao implements DaoInterface<Author> {
     }
 
     @Override
-    public Collection<Author> findAll() {
+    public Collection<T> findAll() {
         return Author.findAll();
     }
 
     @Override
-    public Author save(Author author) {
+    public T save(T author) {
         return author != null ? author.save() : null;
     }
 
     @Override
-    public Author delete(Author author) {
+    public T delete(T author) {
         return author != null ? author.delete() : null;
     }
 

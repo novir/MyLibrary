@@ -24,7 +24,7 @@ public abstract class AbstractCrudAction<T> extends BaseAction<T> {
     public Optional<T> execute(String id, T dto) {
         this.id = parseId(id);
         this.dto = dto;
-        if (this.id != null) {
+        if (this.id != null && dto != null) {
             return run();
         }
         return Optional.empty();

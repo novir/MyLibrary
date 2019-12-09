@@ -1,15 +1,15 @@
 package dao;
 
-import models.Book;
 import models.Tag;
+import play.db.jpa.Model;
 
 import java.util.List;
 import java.util.Optional;
 
-public class TagDao implements DaoInterface<Tag> {
+public class TagDao<T extends Model> implements DaoInterface<T> {
 
     @Override
-    public Optional<Tag> find(long id) {
+    public Optional<T> find(long id) {
         if (id < 1) {
             return Optional.empty();
         }
@@ -17,25 +17,18 @@ public class TagDao implements DaoInterface<Tag> {
     }
 
     @Override
-    public List<Tag> findAll() {
+    public List<T> findAll() {
         return Tag.findAll();
     }
 
     @Override
-    public Tag save(Tag tag) {
+    public T save(T tag) {
         return tag != null ? tag.save() : null;
     }
 
     @Override
-    public Tag delete(Tag tag) {
+    public T delete(T tag) {
         return tag != null ? tag.delete() : null;
     }
 
-    public static Tag findOrCreateByName(String name, Book... taggedBooks) {
-        Tag tag = Tag.find("byName", name).first();
-        if(tag == null) {
-            tag = new Tag(name, taggedBooks);
-        }
-        return tag;
-    }
 }

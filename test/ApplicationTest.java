@@ -11,7 +11,7 @@ public class ApplicationTest extends FunctionalTest {
 
 //    @Test
 //    public void testThatUserRemovalWorks() {
-//        Response response = DELETE("/users/3");
+//        Response response = DELETE("/users/10");
 //        assertIsOk(response);
 //        assertContentType("application/json", response);
 //        assertCharset(play.Play.defaultWebEncoding, response);
@@ -31,7 +31,7 @@ public class ApplicationTest extends FunctionalTest {
 //        assertContentType("application/json", response);
 //        assertCharset(play.Play.defaultWebEncoding, response);
 //    }
-
+//
 //    @Test
 //    public void testThatUserEditionWorks() {
 //        Map<String, String> user = new HashMap<>();
@@ -47,32 +47,32 @@ public class ApplicationTest extends FunctionalTest {
 
     @Test
     public void testThatAuthorRemovalWorks() {
-        Response response = DELETE("/authors/5");
+        Response response = DELETE("/authors/10");
         assertIsOk(response);
         assertContentType("application/json", response);
         assertCharset(play.Play.defaultWebEncoding, response);
     }
-//
-//    @Test
-//    public void testThatAuthorAdditionWorks() {
-//        Map<String, String> user = new HashMap<>();
-//        user.put("author", "create");
-//        user.put("author.name", "Dirty Harry");
-//        Response response = POST("/authors", user);
-//        assertIsOk(response);
-//        assertContentType("application/json", response);
-//        assertCharset(play.Play.defaultWebEncoding, response);
-//    }
 
-//    @Test
-//    public void testThatAuthorEditionWorks() {
-//        Map<String, String> user = new HashMap<>();
-//        user.put("author", "update");
-//        user.put("author.name", "Dirty Frank");
-//        Response response = POST("/authors/5", user);
-//        assertIsOk(response);
-//        assertContentType("application/json", response);
-//        assertCharset(play.Play.defaultWebEncoding, response);
-//    }
+    @Test
+    public void testThatAuthorAdditionWorks() {
+        Map<String, String> user = new HashMap<>();
+        user.put("author", "create");
+        user.put("author.name", "Dirty Harry");
+        Response response = POST("/authors", user);
+        assertIsOk(response);
+        assertContentType("application/json", response);
+        assertCharset(play.Play.defaultWebEncoding, response);
+    }
+
+    @Test
+    public void testThatAuthorEditionWorks() {
+        Map<String, String> user = new HashMap<>();
+        user.put("author", "update");
+        user.put("author.name", "Dirty Frank");
+        Response response = POST("/authors/5", user);
+        assertIsOk(response);
+        assertContentType("application/json", response);
+        assertCharset(play.Play.defaultWebEncoding, response);
+    }
     
 }

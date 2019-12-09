@@ -1,6 +1,7 @@
 package services.authors;
 
 import dao.AuthorDao;
+import dao.DaoInterface;
 import dto.AuthorDto;
 import models.Author;
 
@@ -10,8 +11,8 @@ import java.util.stream.Collectors;
 public class ListAuthorsService {
 
     public List<AuthorDto> execute() {
-        AuthorDao authorDao = new AuthorDao();
-        return authorDao.findAll()
+        DaoInterface<Author> dao = new AuthorDao<>();
+        return dao.findAll()
                 .stream()
                 .map(Author::toDto)
                 .collect(Collectors.toList());
