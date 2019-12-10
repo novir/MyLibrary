@@ -7,22 +7,28 @@ public abstract class BaseDto<T> {
 
     private final Long id;
 
-    private LocalDate createdAt;
+    private final LocalDate createdAt;
 
-    private LocalDate updatedAt;
+    private final LocalDate updatedAt;
 
-    private LocalDate deletedAt;
+    private final LocalDate deletedAt;
 
-    private boolean isDeleted;
+    private final boolean isDeleted;
+
+    BaseDto() {
+        id = null;
+        createdAt = null;
+        updatedAt = null;
+        deletedAt = null;
+        isDeleted = false;
+    }
 
     BaseDto(Long id, LocalDate createdAt, LocalDate updatedAt, LocalDate deletedAt) {
         this.id = id;
         this.createdAt = createdAt;
         this.updatedAt = updatedAt;
         this.deletedAt = deletedAt;
-        if (deletedAt != null) {
-            isDeleted = true;
-        }
+        isDeleted = (deletedAt != null);
     }
 
     public abstract T toModel();

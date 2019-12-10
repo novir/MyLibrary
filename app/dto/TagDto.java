@@ -14,6 +14,10 @@ public class TagDto extends BaseDto {
 
     private Set<BookDto> books;
 
+    public TagDto(String name) {
+        this.name = name;
+    }
+
     private TagDto(TagDtoBuilder builder) {
         super(builder.id, builder.createdAt, builder.updatedAt, builder.deletedAt);
         name = builder.name;
@@ -56,10 +60,6 @@ public class TagDto extends BaseDto {
         private LocalDate deletedAt;
 
         private Tag tagModel;
-
-        public TagDtoBuilder(String name) {
-            this.name = name;
-        }
 
         public TagDtoBuilder(Tag tag) {
             tagModel = tag;

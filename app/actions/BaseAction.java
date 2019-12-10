@@ -1,20 +1,13 @@
 package actions;
 
-import com.google.gson.Gson;
+import commons.JsonConverter;
 
 public abstract class BaseAction<T> {
 
-    private static Gson gson;
-
-    private static Gson getGsonInstance() {
-        if (gson == null) {
-            gson = new Gson();
-        }
-        return gson;
-    }
-
     protected String getAsJson(T dto) {
-        return getGsonInstance().toJson(dto);
+        // TODO Change new object creation to DI
+        JsonConverter<T> converter = new JsonConverter<>();
+        return converter.serialize(dto);
     }
 
 }

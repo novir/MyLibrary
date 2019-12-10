@@ -1,8 +1,48 @@
-<div class="container" style="background: red">
+<div class="container">
     <div class="row" ng-repeat="user in vm.users">
         <span class="glyphicon glyphicon-user col-xs-1"></span>
-        <div class="col-xs-3">{{ user.login }}</div>
-        <div class="col-xs-4">{{ user.email }}</div>
-        <div class="col-xs-4">{{ user.createdAt }}</div>
+        <div class="col-xs-3">
+            <label>
+                <input type="text" ng-model="user.login" required>
+            </label>
+        </div>
+        <div class="col-xs-3">
+            <label>
+                <input type="text" ng-model="user.email" required>
+            </label>
+        </div>
+        <div class="col-xs-3">
+            <label>
+                <input type="password" ng-model="user.password" required>
+            </label>
+        </div>
+    </div>
+    <div class="row" ng-if="checked" ng-init="newUser = {login: '', password: '', email:''}">
+        <span class="glyphicon glyphicon-user col-xs-1"></span>
+        <div class="col-xs-3">
+            <label>
+                <input type="text" ng-model="newUser.login" required>
+            </label>
+        </div>
+        <div class="col-xs-3">
+            <label>
+                <input type="text" ng-model="newUser.email" required>
+            </label>
+        </div>
+        <div class="col-xs-3">
+            <label>
+                <input type="password" ng-model="newUser.password" required>
+            </label>
+        </div>
+        <div class="col-xs-2">
+            <button ng-click="addUser(newUser)">Dodaj</button>
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-xs-12">
+            <div class="text-center">
+                <button ng-click="showNewRow()">+</button>
+            </div>
+        </div>
     </div>
 </div>

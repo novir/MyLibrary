@@ -11,5 +11,4 @@ public class Books extends Controller {
         List<Book> books = Book.findAll();
         renderJSON(books);
     }
-
 }

@@ -14,6 +14,10 @@ public class AuthorDto extends BaseDto<Author> {
 
     private Set<BookDto> books;
 
+    public AuthorDto(String name) {
+        this.name = name;
+    }
+
     private AuthorDto(AuthorDtoBuilder builder) {
         super(builder.id, builder.createdAt, builder.updatedAt, builder.deletedAt);
         name = builder.name;
@@ -56,10 +60,6 @@ public class AuthorDto extends BaseDto<Author> {
         private LocalDate deletedAt;
 
         private Author authorModel;
-
-        public AuthorDtoBuilder(String name) {
-            this.name = name;
-        }
 
         public AuthorDtoBuilder(Author author) {
             authorModel = author;

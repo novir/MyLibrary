@@ -18,6 +18,12 @@ public class UserDto extends BaseDto<User> {
 
     private Set<BookDto> books;
 
+    public UserDto(String login, String password, String email) {
+        this.login = login;
+        this.password = password;
+        this.email = email;
+    }
+
     private UserDto(UserDtoBuilder builder) {
         super(builder.id, builder.createdAt, builder.updatedAt, builder.deletedAt);
         login = builder.login;
@@ -81,12 +87,6 @@ public class UserDto extends BaseDto<User> {
         private LocalDate deletedAt;
 
         private User userModel;
-
-        public UserDtoBuilder(String login, String password, String email) {
-            this.login = login;
-            this.password = password;
-            this.email = email;
-        }
 
         public UserDtoBuilder(User user) {
             userModel = user;

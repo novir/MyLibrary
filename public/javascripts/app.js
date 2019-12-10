@@ -8,7 +8,7 @@
                 controller: "HomeController",
                 controllerAs: "vm"
             })
-            .when("/user/:id", {
+            .when("/users/:id", {
                 templateUrl: "/public/templates/user.html",
                 controller: "UserController",
                 controllerAs: "user"

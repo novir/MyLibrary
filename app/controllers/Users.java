@@ -16,19 +16,18 @@ public class Users extends Controller {
         showUserAction.execute(id).ifPresent(Controller::renderJSON);
     }
 
-    public static void create(UserDto user) {
+    public static void create(UserDto body) {
         CreateUserAction createUserAction = new CreateUserAction();
-        createUserAction.execute(user).ifPresent(Controller::renderJSON);
+        createUserAction.execute(body).ifPresent(Controller::renderJSON);
     }
 
-    public static void update(String id, UserDto user) {
+    public static void update(String id, UserDto body) {
         UpdateUserAction updateUserAction = new UpdateUserAction();
-        updateUserAction.execute(id, user).ifPresent(Controller::renderJSON);
+        updateUserAction.execute(id, body).ifPresent(Controller::renderJSON);
     }
 
     public static void delete(String id) {
         RemoveUserAction removeUserAction = new RemoveUserAction();
         removeUserAction.execute(id).ifPresent(Controller::renderJSON);
     }
-
 }

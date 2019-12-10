@@ -22,6 +22,17 @@ public class BookDto extends BaseDto {
 
     private Set<TagDto> tags;
 
+    public BookDto(UserDto owner, String title, LocalDate purchaseDate) {
+        this(owner, null, title, purchaseDate);
+    }
+
+    public BookDto(UserDto owner, AuthorDto author, String title, LocalDate purchaseDate) {
+        this.owner = owner;
+        this.author = author;
+        this.title = title;
+        this.purchaseDate = purchaseDate;
+    }
+
     private BookDto(BookDtoBuilder builder) {
         super(builder.id, builder.createdAt, builder.updatedAt, builder.deletedAt);
         title = builder.title;
@@ -94,12 +105,6 @@ public class BookDto extends BaseDto {
         private LocalDate deletedAt;
 
         private Book bookModel;
-
-        public BookDtoBuilder(UserDto owner, String title, LocalDate purchaseDate) {
-            this.owner = owner;
-            this.title = title;
-            this.purchaseDate = purchaseDate;
-        }
 
         public BookDtoBuilder(Book book) {
             bookModel = book;
