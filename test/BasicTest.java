@@ -5,15 +5,21 @@ import play.test.*;
 
 public class BasicTest extends UnitTest {
 
+    @Before
+    public void setup() {
+        Fixtures.deleteDatabase();
+        Fixtures.loadModels("test-data/users.yml");
+    }
+
     @Test
     public void createAndRetrieveUser() {
 
-        // Retrieve the user with e-mail address bob@gmail.com
-        User bob = User.find("byEmail", "alice@gmail.com").first();
+        // Retrieve the user with e-mail address bob@example.com
+        User bob = User.find("byEmail", "bob@example.com").first();
 
         // Test
         assertNotNull(bob);
-        //assertEquals("Alice", bob.login);
+        assertEquals("Bob", bob.getLogin());
     }
 
 }

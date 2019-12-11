@@ -6,28 +6,29 @@ import play.mvc.Controller;
 
 public class Authors extends Controller {
 
-    public static void index() {
-        ListAuthorsAction listAuthorsAction = new ListAuthorsAction();
+    private final ListAuthorsAction listAuthorsAction = new ListAuthorsAction();
+    private final ShowAuthorAction showAuthorAction = new ShowAuthorAction();
+    private final CreateAuthorAction createAuthorAction = new CreateAuthorAction();
+    private final UpdateAuthorAction updateAuthorAction = new UpdateAuthorAction();
+    private final RemoveAuthorAction removeAuthorAction = new RemoveAuthorAction();
+
+    public void index() {
         renderJSON(listAuthorsAction.execute());
     }
 
-    public static void show(String id) {
-        ShowAuthorAction showAuthorAction = new ShowAuthorAction();
+    public void show(String id) {
         showAuthorAction.execute(id).ifPresent(Controller::renderJSON);
     }
 
-    public static void create(AuthorDto body) {
-        CreateAuthorAction createAuthorAction = new CreateAuthorAction();
+    public void create(AuthorDto body) {
         createAuthorAction.execute(body).ifPresent(Controller::renderJSON);
     }
 
-    public static void update(String id, AuthorDto body) {
-        UpdateAuthorAction updateAuthorAction = new UpdateAuthorAction();
+    public void update(String id, AuthorDto body) {
         updateAuthorAction.execute(id, body).ifPresent(Controller::renderJSON);
     }
 
-    public static void delete(String id) {
-        RemoveAuthorAction removeAuthorAction = new RemoveAuthorAction();
+    public void delete(String id) {
         removeAuthorAction.execute(id).ifPresent(Controller::renderJSON);
     }
 }

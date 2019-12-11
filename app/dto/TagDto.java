@@ -45,6 +45,7 @@ public class TagDto extends BaseDto {
         return new Tag(name);
     }
 
+    // Builder nested class
     public static class TagDtoBuilder {
 
         private Long id;
@@ -72,12 +73,12 @@ public class TagDto extends BaseDto {
 
         public TagDtoBuilder withBooks() {
             if (tagModel != null) {
-                books = getTaggedBooks();
+                books = retrieveTaggedBooks();
             }
             return this;
         }
 
-        private Set<BookDto> getTaggedBooks() {
+        private Set<BookDto> retrieveTaggedBooks() {
             return tagModel.getBooks()
                     .stream()
                     .map(Book::toDto)

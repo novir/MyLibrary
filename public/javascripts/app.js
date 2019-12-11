@@ -11,7 +11,7 @@
             .when("/users/:id", {
                 templateUrl: "/public/templates/user.html",
                 controller: "UserController",
-                controllerAs: "user"
+                controllerAs: "vm"
             })
             .otherwise({
                 redirectTo: "/home"

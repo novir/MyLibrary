@@ -6,28 +6,29 @@ import play.mvc.Controller;
 
 public class Users extends Controller {
 
-    public static void index() {
-        ListUsersAction listUsersAction = new ListUsersAction();
+    private final ListUsersAction listUsersAction = new ListUsersAction();
+    private final ShowUserAction showUserAction = new ShowUserAction();
+    private final CreateUserAction createUserAction = new CreateUserAction();
+    private final UpdateUserAction updateUserAction = new UpdateUserAction();
+    private final RemoveUserAction removeUserAction = new RemoveUserAction();
+
+    public void index() {
         renderJSON(listUsersAction.execute());
     }
 
-    public static void show(String id) {
-        ShowUserAction showUserAction = new ShowUserAction();
+    public void show(String id) {
         showUserAction.execute(id).ifPresent(Controller::renderJSON);
     }
 
-    public static void create(UserDto body) {
-        CreateUserAction createUserAction = new CreateUserAction();
+    public void create(UserDto body) {
         createUserAction.execute(body).ifPresent(Controller::renderJSON);
     }
 
-    public static void update(String id, UserDto body) {
-        UpdateUserAction updateUserAction = new UpdateUserAction();
+    public void update(String id, UserDto body) {
         updateUserAction.execute(id, body).ifPresent(Controller::renderJSON);
     }
 
-    public static void delete(String id) {
-        RemoveUserAction removeUserAction = new RemoveUserAction();
+    public void delete(String id) {
         removeUserAction.execute(id).ifPresent(Controller::renderJSON);
     }
 }

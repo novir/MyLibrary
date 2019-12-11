@@ -6,6 +6,7 @@ import models.Tag;
 import models.User;
 
 import java.time.LocalDate;
+import java.util.HashSet;
 import java.util.Optional;
 import java.util.Set;
 import java.util.stream.Collectors;
@@ -50,7 +51,7 @@ public class BookDto extends BaseDto {
         return purchaseDate;
     }
 
-    public UserDto getUser() {
+    public UserDto getOwner() {
         return owner;
     }
 
@@ -70,12 +71,16 @@ public class BookDto extends BaseDto {
         this.purchaseDate = purchaseDate;
     }
 
-    public void setUser(UserDto user) {
-        this.owner = user;
+    public void setOwner(UserDto owner) {
+        this.owner = owner;
     }
 
     public void setAuthor(AuthorDto author) {
         this.author = author;
+    }
+
+    public void setTags(Set<TagDto> tags) {
+        this.tags = tags;
     }
 
     @Override
@@ -84,6 +89,7 @@ public class BookDto extends BaseDto {
         return new Book(owner.toModel(), bookAuthor, title, purchaseDate);
     }
 
+    // Builder nested class
     public static class BookDtoBuilder {
 
         private Long id;
@@ -96,7 +102,7 @@ public class BookDto extends BaseDto {
 
         private AuthorDto author;
 
-        private Set<TagDto> tags;
+        private Set<TagDto> tags = new HashSet<>();
 
         private LocalDate createdAt;
 
@@ -108,6 +114,7 @@ public class BookDto extends BaseDto {
 
         public BookDtoBuilder(Book book) {
             bookModel = book;
+            id = bookModel.getId();
             title = bookModel.getTitle();
             purchaseDate = bookModel.getPurchaseDate();
             createdAt = bookModel.getCreatedAt().orElse(null);
@@ -117,16 +124,16 @@ public class BookDto extends BaseDto {
 
         public BookDtoBuilder withOwner() {
             if (bookModel != null) {
-                User user = bookModel.getUser();
-                this.owner = user.toDto();
+                User model = bookModel.getUser();
+                this.owner = model.toDto();
             }
             return this;
         }
 
         public BookDtoBuilder withAuthor() {
             if (bookModel != null) {
-                Author author = bookModel.getAuthor();
-                this.author = author.toDto();
+                Author model = bookModel.getAuthor();
+                this.author = model.toDto();
             }
             return this;
         }

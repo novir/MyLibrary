@@ -57,7 +57,7 @@ public class Book extends MetaModel {
 
     public Book(Book original) {
         title = original.title;
-        purchaseDate = Date.valueOf(original.getPurchaseDate());
+        purchaseDate = original.purchaseDate;
         owner = original.owner;
         author = original.author;
         tags.addAll(original.tags);

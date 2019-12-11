@@ -18,7 +18,10 @@ public abstract class AbstractCrudAction<T> extends BaseAction<T> {
 
     public Optional<T> execute(T dto) {
         this.dto = dto;
-        return run();
+        if (this.dto != null) {
+            return run();
+        }
+        return Optional.empty();
     }
 
     public Optional<T> execute(String id, T dto) {

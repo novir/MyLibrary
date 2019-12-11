@@ -1,48 +1,54 @@
 <div class="container">
-    <div class="row" ng-repeat="user in vm.users">
-        <span class="glyphicon glyphicon-user col-xs-1"></span>
-        <div class="col-xs-3">
-            <label>
-                <input type="text" ng-model="user.login" required>
-            </label>
-        </div>
-        <div class="col-xs-3">
-            <label>
-                <input type="text" ng-model="user.email" required>
-            </label>
-        </div>
-        <div class="col-xs-3">
-            <label>
-                <input type="password" ng-model="user.password" required>
-            </label>
-        </div>
-    </div>
-    <div class="row" ng-if="checked" ng-init="newUser = {login: '', password: '', email:''}">
-        <span class="glyphicon glyphicon-user col-xs-1"></span>
-        <div class="col-xs-3">
-            <label>
-                <input type="text" ng-model="newUser.login" required>
-            </label>
-        </div>
-        <div class="col-xs-3">
-            <label>
-                <input type="text" ng-model="newUser.email" required>
-            </label>
-        </div>
-        <div class="col-xs-3">
-            <label>
-                <input type="password" ng-model="newUser.password" required>
-            </label>
-        </div>
-        <div class="col-xs-2">
-            <button ng-click="addUser(newUser)">Dodaj</button>
-        </div>
-    </div>
+    <table class="table table-bordered table-striped table-hover">
+        <thead>
+            <tr><td class="text-center" colspan="5">Użytkownicy</td></tr>
+        </thead>
+        <tbody>
+            <tr ng-repeat="user in vm.users">
+                <td>
+                    <span class="glyphicon glyphicon-user col-xs-1"></span>
+                </td>
+                <td class="col-xs-3">
+                    <input type="text" ng-model="user.login" required>
+                </td>
+                <td class="col-xs-3">
+                    <input type="text" ng-model="user.email" required>
+                </td>
+                <td class="col-xs-3">
+                    <input type="password" ng-model="user.password" required>
+                </td>
+                <td class="text-center col-xs-2">
+                    <button ng-click="vm.updateUser(user)">Zmień</button>
+                    <button ng-click="vm.removeUser(user)">Usuń</button>
+                </td>
+            </tr>
+            <tr ng-if="vm.extraRowPresent" ng-init="newUser = {login: '', password: '', email:''}">
+                <td>
+                    <span class="glyphicon glyphicon-plus text-center col-xs-1"></span>
+                </td>
+                <td class="col-xs-3">
+                    <input type="text" ng-model="newUser.login" required>
+                </td>
+                <td class="col-xs-3">
+                    <input type="text" ng-model="newUser.email" required>
+                </td>
+                <td class="col-xs-3">
+                    <input type="password" ng-model="newUser.password" required>
+                </td>
+                <td class="text-center col-xs-2">
+                    <button ng-click="vm.addUser(newUser)">Dodaj</button>
+                </td>
+            </tr>
+        </tbody>
+    </table>
     <div class="row">
-        <div class="col-xs-12">
-            <div class="text-center">
-                <button ng-click="showNewRow()">+</button>
-            </div>
+        <div class="text-center col-xs-12">
+            <button type="button" class="btn btn-default" ng-hide="vm.extraRowPresent" ng-click="vm.showExtraRow()">
+                <span class="glyphicon glyphicon-plus" aria-hidden="true"></span>
+            </button>
+            <button type="button" class="btn btn-default" ng-show="vm.extraRowPresent" ng-click="vm.hideExtraRow()">
+                <span class="glyphicon glyphicon-minus" aria-hidden="true"></span>
+            </button>
         </div>
     </div>
 </div>

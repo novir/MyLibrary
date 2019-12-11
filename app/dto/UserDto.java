@@ -68,6 +68,7 @@ public class UserDto extends BaseDto<User> {
         return new User(login, password, email);
     }
 
+    // Builder nested class
     public static class UserDtoBuilder {
 
         private Long id;
@@ -101,12 +102,12 @@ public class UserDto extends BaseDto<User> {
 
         public UserDtoBuilder withBooks() {
             if (userModel != null) {
-                books = getUserBooks();
+                books = retrieveUserBooks();
             }
             return this;
         }
 
-        private Set<BookDto> getUserBooks() {
+        private Set<BookDto> retrieveUserBooks() {
             return userModel.getBooks()
                     .stream()
                     .map(Book::toDto)

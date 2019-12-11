@@ -45,6 +45,7 @@ public class AuthorDto extends BaseDto<Author> {
         return new Author(name);
     }
 
+    // Builder nested class
     public static class AuthorDtoBuilder {
 
         private Long id;
@@ -72,12 +73,12 @@ public class AuthorDto extends BaseDto<Author> {
 
         public AuthorDtoBuilder withBooks() {
             if (authorModel != null) {
-                books = getAuthorBooks();
+                books = retrieveAuthorBooks();
             }
             return this;
         }
 
-        private Set<BookDto> getAuthorBooks() {
+        private Set<BookDto> retrieveAuthorBooks() {
             return authorModel.getBooks()
                     .stream()
                     .map(Book::toDto)
@@ -88,5 +89,4 @@ public class AuthorDto extends BaseDto<Author> {
             return new AuthorDto(this);
         }
     }
-
 }

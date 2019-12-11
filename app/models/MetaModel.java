@@ -41,27 +41,9 @@ public abstract class MetaModel extends Model {
         return isDeleted;
     }
 
-//    public void setCreatedAt(LocalDate createdAt) {
-//        this.createdAt = Date.valueOf(createdAt);
-//    }
-//
-//    public void setUpdatedAt(LocalDate updatedAt) {
-//        this.updatedAt = Date.valueOf(updatedAt);
-//    }
-//
-//    public void setDeletedAt(LocalDate deletedAt) {
-//        this.deletedAt = Date.valueOf(deletedAt);
-//    }
-//
-//    public void setIsDeleted(boolean isDeleted) {
-//        this.isDeleted = isDeleted;
-//    }
-
     @PrePersist
     protected void onCreate() {
         createdAt = Date.valueOf(LocalDate.now());
-        // TODO Ask if update date should be affected during creation
-        updatedAt = Date.valueOf(LocalDate.now());
     }
 
     @PreUpdate

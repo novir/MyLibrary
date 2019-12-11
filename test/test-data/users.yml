@@ -1,22 +1,22 @@
 # you describe your data using the YAML notation here
 # and then load them using Fixtures.load("users.yml")
 
- User(1):
+ User(bob):
     login: Bob
     password: secret
     email: bob@example.com
 
- User(2):
+ User(alice):
     login: Alice
     password: secret
     email: alice@example.com
 
- User(3):
+ User(greg):
     login: Greg
     password: secret
     email: greg@example.com
 
-# Book(4):
+# Book(gwtw):
 #     title: Gone with the Wind
 #     owner_id: 1
-#     purchuase_date: 2010-11-22T08:23:15
+#     purchuase_date: 2019-11-22T08:23:15

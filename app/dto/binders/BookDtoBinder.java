@@ -11,11 +11,12 @@ import java.lang.reflect.Type;
 @Global
 public class BookDtoBinder implements TypeBinder<BookDto> {
 
+    // TODO Change new object creation to DI
+    private JsonConverter<BookDto> converter = new JsonConverter<>();
+
     @Override
     public Object bind(String name, Annotation[] annotations, String value, Class actualClass, Type genericType)
             throws Exception {
-        // TODO Change new object creation to DI
-        JsonConverter<BookDto> converter = new JsonConverter<>();
         return converter.deserialize(value, genericType);
     }
 }
