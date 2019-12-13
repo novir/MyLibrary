@@ -1,52 +1,52 @@
 <div class="container">
-    <table class="table table-bordered table-striped table-hover">
-        <thead>
-            <tr><td class="text-center" colspan="5">Użytkownicy</td></tr>
-        </thead>
-        <tbody>
-            <tr ng-repeat="user in vm.users">
-                <td>
-                    <span class="glyphicon glyphicon-user col-xs-1"></span>
-                </td>
-                <td class="col-xs-3">
-                    <input type="text" ng-model="user.login" required>
-                </td>
-                <td class="col-xs-3">
-                    <input type="text" ng-model="user.email" required>
-                </td>
-                <td class="col-xs-3">
-                    <input type="password" ng-model="user.password" required>
-                </td>
-                <td class="text-center col-xs-2">
-                    <button ng-click="vm.updateUser(user)">Zmień</button>
-                    <button ng-click="vm.removeUser(user)">Usuń</button>
-                </td>
-            </tr>
-            <tr ng-if="vm.extraRowPresent" ng-init="newUser = {login: '', password: '', email:''}">
-                <td>
-                    <span class="glyphicon glyphicon-plus text-center col-xs-1"></span>
-                </td>
-                <td class="col-xs-3">
-                    <input type="text" ng-model="newUser.login" required>
-                </td>
-                <td class="col-xs-3">
-                    <input type="text" ng-model="newUser.email" required>
-                </td>
-                <td class="col-xs-3">
-                    <input type="password" ng-model="newUser.password" required>
-                </td>
-                <td class="text-center col-xs-2">
-                    <button ng-click="vm.addUser(newUser)">Dodaj</button>
-                </td>
-            </tr>
-        </tbody>
-    </table>
     <div class="row">
-        <div class="text-center col-xs-12">
-            <button type="button" class="btn btn-default" ng-hide="vm.extraRowPresent" ng-click="vm.showExtraRow()">
+        <b class="col-xs-12 text-center">Użytkownicy</b>
+    </div>
+    <div class="row input-group input-group-lg display-flex-center" ng-repeat="user in vm.users">
+        <div class="col-xs-1">
+            <span class="input-group-addon glyphicon glyphicon-user"></span>
+        </div>
+        <div class="col-xs-3">
+            <input type="text" class="form-control" ng-model="user.login" required>
+        </div>
+        <div class="col-xs-3">
+            <input type="email" class="form-control" ng-model="user.email" required>
+        </div>
+        <div class="col-xs-3">
+            <input type="password" class="form-control" ng-model="user.password" required>
+        </div>
+        <div class="col-xs-2 text-center">
+            <span class="input-group-btn">
+                <button type="button" class="btn btn-success" ng-click="vm.updateUser(user)">Zmień</button>
+                <button type="button" class="btn btn-danger" ng-click="vm.removeUser(user)">Usuń</button>
+            </span>
+        </div>
+    </div>
+    <div class="row input-group input-group-lg display-flex-center" ng-if="vm.extraRowPresent" ng-init="newUser = {login: '', password: '', email:''}">
+        <div class="col-xs-1">
+            <span class="input-group-addon glyphicon glyphicon-plus"></span>
+        </div>
+        <div class="col-xs-3">
+            <input type="text" class="form-control" ng-model="newUser.login" placeholder="Login" required>
+        </div>
+        <div class="col-xs-3">
+            <input type="email" class="form-control" ng-model="newUser.email" placeholder="Adres e-mail" required>
+        </div>
+        <div class="col-xs-3">
+            <input type="password" class="form-control" ng-model="newUser.password" placeholder="Hasło" required>
+        </div>
+        <div class="col-xs-2 text-center">
+            <span class="input-group-btn">
+                <button type="button" class="btn btn-success" ng-click="vm.addUser(newUser)">Dodaj</button>
+            </span>
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-xs-12 text-center">
+            <button type="button" class="btn btn-info" ng-hide="vm.extraRowPresent" ng-click="vm.showExtraRow()">
                 <span class="glyphicon glyphicon-plus" aria-hidden="true"></span>
             </button>
-            <button type="button" class="btn btn-default" ng-show="vm.extraRowPresent" ng-click="vm.hideExtraRow()">
+            <button type="button" class="btn btn-info" ng-show="vm.extraRowPresent" ng-click="vm.hideExtraRow()">
                 <span class="glyphicon glyphicon-minus" aria-hidden="true"></span>
             </button>
         </div>
