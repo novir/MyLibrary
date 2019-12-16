@@ -23,3 +23,7 @@
     float:none;
     vertical-align: middle;
 }
+
+.form-inline .input-group .input-group-addon-fixed-width {
+    width: 40px;
+}

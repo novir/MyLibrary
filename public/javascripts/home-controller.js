@@ -4,6 +4,7 @@ angular.module('myLib')
         vm.listUsers = function () {
             $http.get('http://localhost:9000/users').then(function (response) {
                 vm.users = response.data;
+                vm.SortOrder = '+login';
             });
         };
         vm.addUser = function (user) {
