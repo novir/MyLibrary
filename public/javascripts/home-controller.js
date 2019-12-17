@@ -15,7 +15,13 @@ angular.module('myLib')
         vm.updateUser = function (user) {
             let id = user.id;
             let userData = JSON.stringify(user);
-            $http.post('http://localhost:9000/users/' + id, userData);
+            $http.post('http://localhost:9000/users/' + id, userData)
+                .then(function onSuccess(response) {
+                        $window.alert("User data changed correctly.");
+                    }, function onError(response) {
+                        $window.alert("Error while user data change.");
+                    }
+                );
             vm.listUsers();
         };
         vm.removeUser = function (user) {
