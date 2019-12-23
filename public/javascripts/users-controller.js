@@ -1,5 +1,5 @@
 angular.module('myLib')
-    .controller('HomeController', function HomeController($http, $window) {
+    .controller('UsersController', function UsersController($http, $location, $modal) {
         const vm = this;
         vm.listUsers = function () {
             $http.get('http://localhost:9000/users').then(function (response) {
@@ -12,16 +12,14 @@ angular.module('myLib')
             $http.post('http://localhost:9000/users', userData);
             vm.listUsers();
         };
-        vm.updateUser = function (user) {
+        vm.editUser = function (user) {
             let id = user.id;
-            let userData = JSON.stringify(user);
-            $http.post('http://localhost:9000/users/' + id, userData)
-                .then(function onSuccess(response) {
-                        $window.alert("User data changed correctly.");
-                    }, function onError(response) {
-                        $window.alert("Error while user data change.");
-                    }
-                );
+            $modal({
+                templateUrl: '/public/templates/user.html',
+                controller: 'UserController',
+                controllerAs: 'vm'
+            });
+            // $location.path('/users/' + id);
             vm.listUsers();
         };
         vm.removeUser = function (user) {

@@ -1,5 +1,8 @@
 package dto;
 
+import com.google.gson.annotations.JsonAdapter;
+import commons.LocalDateSerializer;
+
 import java.time.LocalDate;
 import java.util.Optional;
 
@@ -7,10 +10,13 @@ public abstract class BaseDto<T> {
 
     private final Long id;
 
+    @JsonAdapter(LocalDateSerializer.class)
     private final LocalDate createdAt;
 
+    @JsonAdapter(LocalDateSerializer.class)
     private final LocalDate updatedAt;
 
+    @JsonAdapter(LocalDateSerializer.class)
     private final LocalDate deletedAt;
 
     private final boolean isDeleted;

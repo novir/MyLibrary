@@ -13,7 +13,7 @@ import java.util.Set;
 public class TagRelationSerializer implements JsonSerializer<Collection<Tag>> {
 
     @Override
-    public JsonElement serialize(Collection<Tag> bag, Type type, JsonSerializationContext jsonSerializationContext) {
+    public JsonElement serialize(Collection<Tag> bag, Type type, JsonSerializationContext context) {
         JsonArray json = new JsonArray();
         for (Tag tag : bag) {
             json.add(tag.toString());

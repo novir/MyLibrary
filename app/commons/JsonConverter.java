@@ -1,8 +1,10 @@
 package commons;
 
 import com.google.gson.Gson;
+import com.google.gson.GsonBuilder;
 
 import java.lang.reflect.Type;
+import java.time.LocalDate;
 
 public class JsonConverter<T> {
 
@@ -10,7 +12,10 @@ public class JsonConverter<T> {
 
     private static Gson getGsonInstance() {
         if (gson == null) {
-            gson = new Gson();
+            gson = new GsonBuilder()
+                    .setPrettyPrinting()
+                    .registerTypeAdapter(LocalDate.class, new LocalDateSerializer())
+                    .create();
         }
         return gson;
     }

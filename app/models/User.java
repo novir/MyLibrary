@@ -69,10 +69,6 @@ public class User extends MetaModel {
         book.setUser(this);
     }
 
-    public UserDto toDto() {
-        return new UserDto.UserDtoBuilder(this).build();
-    }
-
     public void fillWith(User other) {
         if (other.login != null) {
             this.login = other.login;
@@ -86,6 +82,10 @@ public class User extends MetaModel {
         if (other.books != null) {
             this.books = other.books;
         }
+    }
+
+    public UserDto toDto() {
+        return new UserDto.UserDtoBuilder(this).build();
     }
 
     @Override

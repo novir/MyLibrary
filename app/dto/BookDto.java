@@ -1,5 +1,7 @@
 package dto;
 
+import com.google.gson.annotations.JsonAdapter;
+import commons.LocalDateSerializer;
 import models.Author;
 import models.Book;
 import models.Tag;
@@ -15,6 +17,7 @@ public class BookDto extends BaseDto {
 
     private String title;
 
+    @JsonAdapter(LocalDateSerializer.class)
     private LocalDate purchaseDate;
 
     private UserDto owner;

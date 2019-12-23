@@ -1,4 +1,36 @@
-<div>
-    Login: {{user.login}}<br />
-    Hasło: {{user.password}}<br />
+<div class="modal" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+    <div class="modal-dialog" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h3 id="modal-title" class="modal-title">
+                    {{vm.title}}
+                </h3>
+            </div>
+            <div id="modal-desc" class="modal-body">
+                <p>{{vm.body}}</p>
+                <div>
+                    <form>
+                        <div class="form-group">
+                            <label for="exampleInputEmail1">Name :</label>
+                            <input type="text" class="form-control" ng-model="vm.user.login" placeholder="enter your name">
+                            <br>
+                        </div>
+                        <div class="form-group">
+                            <label for="exampleInputPassword1">
+                                Password :</label>
+                            <input type="password" class="form-control" ng-model="vm.user.password"
+                                   placeholder="enter your password">
+                        </div>
+                    </form>
+                </div>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-success" ng-click="vm.ok(vm.user)">Ok</button>
+                <button type="button" class="btn btn-danger" ng-click="vm.cancel('modal dismissed')">
+                    Cancel
+                </button>
+                <button type="button" class="btn btn-danger" ng-click="vm.destroy()">Destroy MEEEE!!!</button>
+            </div>
+        </div>
+    </div>
 </div>

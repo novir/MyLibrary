@@ -4,20 +4,29 @@
             <h1 class="panel-title text-center">Użytkownicy</h1>
         </div>
         <div class="panel-body">
-            <div class="form-inline" ng-repeat="user in vm.users | orderBy:vm.SortOrder">
-                <div class="input-group col-xs-12 col-sm-2">
-                    <label for="user-{{$index}}-login" class="input-group-addon input-group-addon-fixed-width">
+            <form name="userData" class="form-inline" ng-repeat="user in vm.users">
+                <div class="input-group col-xs-12 col-sm-2" data-toggle="popover" title="Popover title"
+                     ng-class="{'has-success': userData.login.$dirty && userData.login.$valid, 'has-error': userData.login.$touched && userData.login.$error.required}">
+                    <label for="user-{{$index}}-login" class="control-label input-group-addon input-group-addon-fixed-width">
                         <span class="glyphicon glyphicon-user"></span>
                     </label>
-                        <input id="user-{{$index}}-login" class="form-control" type="text" title="Podaj login" placeholder="Login" aria-label="login"
-                               ng-model="user.login" required>
+                    <input id="user-{{$index}}-login" name="login" class="form-control" type="text" title="Podaj login" placeholder="Login" aria-label="login"
+                           ng-model="user.login" ng-required="true">
+                    <div ng-if="userData.login.$dirty && userData.login.$valid">
+                        <span class="glyphicon glyphicon-ok form-control-feedback" aria-hidden="true"></span>
+                        <span id="user-input-valid" class="sr-only">(valid)</span>
+                    </div>
+                    <div ng-if="userData.login.$dirty && userData.login.$error.required">
+                        <span class="glyphicon glyphicon-remove form-control-feedback" aria-hidden="true"></span>
+                        <span id="user-input-error" class="sr-only">(error)</span>
+                    </div>
                 </div>
                 <div class="input-group col-xs-12 col-sm-5">
                     <label for="user-{{$index}}-email" class="input-group-addon input-group-addon-fixed-width">
                         <span class="glyphicon glyphicon-envelope"></span>
                     </label>
-                        <input id="user-{{$index}}-email" class="form-control" type="email" title="Podaj e-mail" placeholder="Adres e-mail" aria-label="email"
-                               ng-model="user.email" required>
+                    <input id="user-{{$index}}-email" class="form-control" type="email" title="Podaj e-mail" placeholder="Adres e-mail" aria-label="email"
+                           ng-model="user.email" required>
                 </div>
                 <div class="input-group col-xs-12 col-sm-3">
                     <label for="user-{{$index}}-password" class="input-group-addon input-group-addon-fixed-width">
@@ -27,14 +36,15 @@
                            ng-model="user.password" required>
                 </div>
                 <div class="input-group col-xs-12 col-sm-1">
-                    <button class="btn btn-success" type="button" ng-click="vm.updateUser(user)">
+                    <button class="btn btn-success" type="button" data-toggle="modal" data-target="#exampleModal"
+                            ng-click="vm.editUser(user)">
                         <span class="glyphicon glyphicon-pencil"></span>
                     </button>
                     <button class="btn btn-danger" type="button" ng-click="vm.removeUser(user)">
                         <span class="glyphicon glyphicon-trash"></span>
                     </button>
                 </div>
-            </div>
+            </form>
             <div class="form-inline" ng-if="vm.extraRowPresent" ng-init="newUser = {login: '', password: '', email:''}">
                 <div class="input-group col-xs-12 col-sm-2">
                     <label for="new-user-login" class="input-group-addon input-group-addon-fixed-width">

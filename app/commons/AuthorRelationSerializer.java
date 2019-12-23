@@ -11,7 +11,7 @@ import java.lang.reflect.Type;
 public class AuthorRelationSerializer implements JsonSerializer<Author> {
 
     @Override
-    public JsonElement serialize(Author author, Type type, JsonSerializationContext jsonSerializationContext) {
+    public JsonElement serialize(Author author, Type type, JsonSerializationContext context) {
         JsonObject json = new JsonObject();
         json.addProperty("name", author.getName());
         return json;
