@@ -1,30 +1,51 @@
-<div class="modal" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+<div class="modal" id="userDetailsModal" tabindex="-1" role="dialog">
     <div class="modal-dialog" role="document">
-        <div class="modal-content">
-            <div class="modal-header">
-                <h3 id="modal-title" class="modal-title">
-                    {{vm.title}}
-                </h3>
+        <div class="modal-content panel panel-default">
+            <div id="modal-title" class="modal-header panel-heading">
+                <h1 class="modal-title panel-title text-center">Zmień dane użytkownika</h1>
             </div>
-            <div id="modal-desc" class="modal-body">
-                <p>{{vm.body}}</p>
-                <div>
-                    <form>
-                        <div class="form-group">
-                            <label for="exampleInputEmail1">Name :</label>
-                            <input type="text" class="form-control" ng-model="vm.user.login" placeholder="enter your name">
-                            <br>
+            <div id="modal-desc" class="modal-body panel-body">
+                <form name="userForm">
+                    <div class="form-group">
+                        <div class="input-group col-xs-12" data-toggle="popover" title="Popover title"
+                             ng-class="{'has-success': userForm.login.$dirty && userForm.login.$valid,
+                                        'has-error': userForm.login.$touched && userForm.login.$error.required}">
+                            <label for="user-login" class="control-label input-group-addon input-group-addon-fixed-width">
+                                <span class="glyphicon glyphicon-user"></span>
+                            </label>
+                            <input id="user-login" class="form-control" name="login" type="text" title="Login użytkownika"
+                                   placeholder="Login" aria-label="login"
+                                   ng-model="vm.user.login" ng-required="true">
+                            <div ng-if="userForm.login.$dirty && userForm.login.$valid">
+                                <span class="glyphicon glyphicon-ok form-control-feedback" aria-hidden="true"></span>
+                                <span id="user-input-valid" class="sr-only">(valid)</span>
+                            </div>
+                            <div ng-if="userForm.login.$dirty && userForm.login.$error.required">
+                            <span class="glyphicon glyphicon-remove form-control-feedback"
+                                  aria-hidden="true"></span>
+                                <span id="user-input-error" class="sr-only">(error)</span>
+                            </div>
                         </div>
-                        <div class="form-group">
-                            <label for="exampleInputPassword1">
-                                Password :</label>
-                            <input type="password" class="form-control" ng-model="vm.user.password"
-                                   placeholder="enter your password">
-                        </div>
-                    </form>
-                </div>
+                    </div>
+                    <div class="input-group col-xs-12">
+                        <label for="user-email" class="input-group-addon input-group-addon-fixed-width">
+                            <span class="glyphicon glyphicon-envelope"></span>
+                        </label>
+                        <input id="user-email" class="form-control" type="email" title="Podaj e-mail"
+                               placeholder="Adres e-mail" aria-label="email"
+                               ng-model="vm.user.email" required>
+                    </div>
+                    <div class="input-group col-xs-12">
+                        <label for="user-password" class="input-group-addon input-group-addon-fixed-width">
+                            <span class="glyphicon glyphicon-lock"></span>
+                        </label>
+                        <input id="user-password" class="form-control" type="password" title="Podaj hasło"
+                               placeholder="Hasło" aria-label="password"
+                               ng-model="vm.user.password" required>
+                    </div>
+                </form>
             </div>
-            <div class="modal-footer">
+            <div id="modal-footer" class="modal-footer panel-footer">
                 <button type="button" class="btn btn-success" ng-click="vm.ok(vm.user)">Ok</button>
                 <button type="button" class="btn btn-danger" ng-click="vm.cancel('modal dismissed')">
                     Cancel

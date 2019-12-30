@@ -1,8 +1,8 @@
 angular.module('myLib')
-    .controller('UserController', function UserController($http, $window, $modal, $routeParams) {
+    .controller('UserController', function UserController($http, $window, $modal, id) {
         const vm = this;
         vm.showUser = function () {
-            $http.get('http://localhost:9000/users/' + $routeParams.id).then(function (response) {
+            $http.get('http://localhost:9000/users/' + id).then(function (response) {
                 vm.user = response.data;
             });
         };

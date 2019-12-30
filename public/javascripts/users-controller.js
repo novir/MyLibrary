@@ -13,11 +13,15 @@ angular.module('myLib')
             vm.listUsers();
         };
         vm.editUser = function (user) {
-            let id = user.id;
             $modal({
                 templateUrl: '/public/templates/user.html',
                 controller: 'UserController',
-                controllerAs: 'vm'
+                controllerAs: 'vm',
+                resolve: {
+                    id: function () {
+                        return user.id;
+                    },
+                }
             });
             // $location.path('/users/' + id);
             vm.listUsers();
