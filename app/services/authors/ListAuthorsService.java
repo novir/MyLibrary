@@ -10,8 +10,9 @@ import java.util.stream.Collectors;
 
 public class ListAuthorsService {
 
+    private final DaoInterface<Author> dao = new AuthorDao<>();
+
     public List<AuthorDto> execute() {
-        DaoInterface<Author> dao = new AuthorDao<>();
         return dao.findAll()
                 .stream()
                 .map(Author::toDto)

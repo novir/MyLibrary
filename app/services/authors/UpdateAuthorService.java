@@ -9,17 +9,17 @@ import java.util.Optional;
 
 public class UpdateAuthorService {
 
+    private final DaoInterface<Author> dao = new AuthorDao<>();
+
     public Optional<AuthorDto> execute(long id, AuthorDto authorData) {
-        DaoInterface<Author> dao = new AuthorDao<>();
-        Optional<Author> modelToUpdate = dao.find(id);
-        if (modelToUpdate.isPresent()) {
-            Author author = modelToUpdate.get();
-            author.fillWith(authorData.toModel());
-            Author updatedModel = dao.save(author);
-            return Optional.of(updatedModel.toDto());
-        }
-        return Optional.empty();
+        Optional<Author> retrievedAuthor = dao.find(id);
+        // retrievedAuthor.fillWith(authorData.toModel());
+        return retrievedAuthor.map(this::updateAuthor);
     }
 
+    private AuthorDto updateAuthor(Author author) {
+        Author updatedModel = dao.save(author);
+        return updatedModel.toDto();
+    }
 
 }

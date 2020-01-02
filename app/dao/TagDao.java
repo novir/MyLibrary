@@ -3,6 +3,7 @@ package dao;
 import models.Tag;
 import play.db.jpa.Model;
 
+import java.util.Collection;
 import java.util.List;
 import java.util.Optional;
 
@@ -17,7 +18,7 @@ public class TagDao<T extends Model> implements DaoInterface<T> {
     }
 
     @Override
-    public List<T> findAll() {
+    public Collection<T> findAll() {
         return Tag.findAll();
     }
 

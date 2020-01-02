@@ -87,7 +87,7 @@ public class BookDto extends BaseDto {
     }
 
     @Override
-    public Object toModel() {
+    public Book toModel() {
         Author bookAuthor = getAuthor().map(AuthorDto::toModel).orElse(null);
         return new Book(owner.toModel(), bookAuthor, title, purchaseDate);
     }

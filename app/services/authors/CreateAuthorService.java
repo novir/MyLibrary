@@ -7,8 +7,9 @@ import models.Author;
 
 public class CreateAuthorService {
 
+    private final DaoInterface<Author> dao = new AuthorDao<>();
+
     public AuthorDto execute(AuthorDto authorData) {
-        DaoInterface<Author> dao = new AuthorDao<>();
         Author modelToPersist = authorData.toModel();
         Author persistedModel = dao.save(modelToPersist);
         return persistedModel.toDto();

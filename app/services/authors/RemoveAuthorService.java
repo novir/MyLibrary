@@ -9,14 +9,16 @@ import java.util.Optional;
 
 public class RemoveAuthorService {
 
+    private final DaoInterface<Author> dao = new AuthorDao<>();
+
     public Optional<AuthorDto> execute(long id) {
-        DaoInterface<Author> dao = new AuthorDao<>();
-        Optional<Author> modelToDelete = dao.find(id);
-        if (modelToDelete.isPresent()) {
-            Author deletedModel = dao.delete(modelToDelete.get());
-            return Optional.of(deletedModel.toDto());
-        }
-        return Optional.empty();
+        Optional<Author> retrievedAuthor = dao.find(id);
+        return retrievedAuthor.map(this::removeAuthor);
+    }
+
+    private AuthorDto removeAuthor(Author author) {
+        Author deletedModel = dao.delete(author);
+        return deletedModel.toDto();
     }
 
 }

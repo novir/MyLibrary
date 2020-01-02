@@ -10,8 +10,9 @@ import java.util.stream.Collectors;
 
 public class ListUsersService {
 
+    private final DaoInterface<User> dao = new UserDao<>();
+
     public List<UserDto> execute() {
-        DaoInterface<User> dao = new UserDao<>();
         return dao.findAll()
                 .stream()
                 .map(User::toDto)

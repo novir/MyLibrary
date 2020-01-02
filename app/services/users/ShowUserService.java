@@ -9,8 +9,9 @@ import java.util.Optional;
 
 public class ShowUserService {
 
+    private final DaoInterface<User> dao = new UserDao<>();
+
     public Optional<UserDto> execute(long id) {
-        DaoInterface<User> dao = new UserDao<>();
         return dao.find(id).map(User::toDto);
     }
 

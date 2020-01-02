@@ -7,8 +7,9 @@ import models.User;
 
 public class CreateUserService {
 
+    private final DaoInterface<User> dao = new UserDao<>();
+
     public UserDto execute(UserDto userData) {
-        DaoInterface<User> dao = new UserDao<>();
         User modelToPersist = userData.toModel();
         User persistedModel = dao.save(modelToPersist);
         return persistedModel.toDto();

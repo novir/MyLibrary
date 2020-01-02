@@ -9,8 +9,9 @@ import java.util.Optional;
 
 public class ShowAuthorService {
 
+    private final DaoInterface<Author> dao = new AuthorDao<>();
+
     public Optional<AuthorDto> execute(long id) {
-        DaoInterface<Author> dao = new AuthorDao<>();
         return dao.find(id).map(Author::toDto);
     }
 

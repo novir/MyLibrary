@@ -41,7 +41,7 @@ public class TagDto extends BaseDto {
     }
 
     @Override
-    public Object toModel() {
+    public Tag toModel() {
         return new Tag(name);
     }
 

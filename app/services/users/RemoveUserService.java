@@ -9,8 +9,9 @@ import java.util.Optional;
 
 public class RemoveUserService {
 
+    private final DaoInterface<User> dao = new UserDao<>();
+
     public Optional<UserDto> execute(long id) {
-        DaoInterface<User> dao = new UserDao<>();
         Optional<User> modelToDelete = dao.find(id);
         if (modelToDelete.isPresent()) {
             User deletedModel = dao.delete(modelToDelete.get());

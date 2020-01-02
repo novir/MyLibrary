@@ -9,8 +9,9 @@ import java.util.Optional;
 
 public class UpdateUserService {
 
+    private final DaoInterface<User> dao = new UserDao<>();
+
     public Optional<UserDto> execute(long id, UserDto userData) {
-        DaoInterface<User> dao = new UserDao<>();
         Optional<User> modelToUpdate = dao.find(id);
         if (modelToUpdate.isPresent()) {
             User user = modelToUpdate.get();

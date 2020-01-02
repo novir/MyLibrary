@@ -3,6 +3,7 @@ package dao;
 import models.Book;
 import play.db.jpa.Model;
 
+import java.util.Collection;
 import java.util.List;
 import java.util.Optional;
 
@@ -17,7 +18,7 @@ public class BookDao<T extends Model> implements DaoInterface<T> {
     }
 
     @Override
-    public List<T> findAll() {
+    public Collection<T> findAll() {
         return Book.findAll();
     }
 
@@ -34,7 +35,7 @@ public class BookDao<T extends Model> implements DaoInterface<T> {
     public List<T> findAllTaggedWith(String tagName) {
         return Book.find(
                 "select distinct book from Book as book join book.tags as tags where t.name = ?", tagName
-        ).fetch();
+                ).fetch();
     }
 
 }
